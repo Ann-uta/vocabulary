@@ -1,5 +1,4 @@
 import './App.css';
-/* variables and general */
 import './Styles/_vars.css';
 import './Styles/_generals.css';
 import './Styles/Header.css';
