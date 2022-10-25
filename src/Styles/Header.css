@@ -1,0 +1,31 @@
+.header {
+    width: 100%;
+    background-color: var(--main-background-color);
+    color: var(--secondary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__menu li {
+    list-style-type: none;
+    display: inline-flex;
+    padding-right: 2vw;
+}
+
+.header__menu a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.header__logo {
+    max-width: 7vw;
+    padding: 1vh 0 1vh 2vw;
+}
+
+@media screen and (max-width: 414px) {
+
+    .header {
+        font-size: 0.7rem;
+    }
+}

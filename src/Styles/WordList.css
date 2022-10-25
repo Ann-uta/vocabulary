@@ -1,0 +1,125 @@
+.table-wrap {
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+caption {
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 1.5rem;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+thead th {
+    font-size: 1.5rem;
+    background-color: var(--secondary-color);
+    padding: 3vh 3vw;
+    border: 1px solid var(--main-font-color);
+}
+
+tr:nth-child(even) {
+    background-color: var(--secondary-color);
+}
+
+tbody tr:nth-child(odd) {
+    background-color: var(--disable-button-color);
+}
+
+/*tr:hover td {
+    background-color: var(--hover-color);
+    transition: 0.3s ease-in-out;
+}*/
+
+table {
+    border: 1px solid var(--main-font-color);
+    border-collapse: collapse;
+    margin-bottom: 50px;
+}
+
+td {
+    border: 1px solid var(--main-font-color);
+    padding: 1vh 2vh;
+}
+
+td input {
+    padding: 0.5rem;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    caret-color: var(--aux-color);
+    border-radius: 5px;
+    box-shadow: 6px 6px 29px 0px rgba(0, 0, 0, 0.06);
+    border: none;
+}
+
+input:focus,
+input:hover {
+    outline: 1px solid var(--delete-button-color);
+}
+
+@media screen and (max-width: 1280px) {
+    caption {
+        font-size: 1.25rem;
+        font-weight: 700;
+        padding: 1rem;
+    }
+
+    thead th {
+        font-size: 1.25rem;
+        padding: 1vh 1vh;
+    }
+
+    td {
+        padding: 0.5rem 1vh;
+    }
+
+    td input {
+        max-width: 100px;
+        padding: 0.3rem;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    td:nth-child(2n),
+    th:nth-child(2n) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    thead th {
+        font-size: 1rem;
+        padding: 1vh 0.3vh;
+    }
+
+    td {
+        font-size: 0.7rem;
+        padding: 0.5rem 0.15rem;
+    }
+
+    td input {
+        max-width: 70px;
+        padding: 0.2rem;
+    }
+}
+
+/*@media screen and (max-width: 280px) {
+    thead th {
+        font-size: 0.7rem;
+        padding: 0.5vh 0.2vh;
+    }
+
+    td {
+        font-size: 0.7rem;
+        padding: 0.1rem 0.05rem;
+    }
+
+    td input {
+        max-width: 70px;
+        padding: 0.15rem;
+    }
+}*/

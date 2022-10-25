@@ -1,0 +1,48 @@
+.edit-btn,
+.delete-btn,
+.save-btn,
+.cancel-btn {
+    background-color: var(--hover-color);
+    color: var(--main-font-color);
+    border: none;
+    border-radius: 5px;
+    padding: 1vh 1vw;
+    font-family: var(--main-font-family);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin: 0.2rem;
+}
+
+.delete-btn,
+.cancel-btn {
+    background-color: var(--delete-button-color);
+}
+
+.save-btn {
+    background-color: var(--save-button-color);
+}
+
+.save-btn:hover {
+    background-color: #307254;
+}
+
+.edit-btn:hover {
+    background-color: #f59958;
+}
+
+.delete-btn:hover,
+.cancel-btn:hover {
+    background-color: #be2f24;
+}
+
+@media screen and (max-width: 414px) {
+
+    .edit-btn,
+    .delete-btn,
+    .save-btn,
+    .cancel-btn {
+        padding: 0.5vh 0.5vw;
+        font-size: 0.7rem;
+    }
+}

@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+/* variables and general */
+import './Styles/_vars.css';
+import './Styles/_generals.css';
+import './Styles/Header.css';
+import './Styles/WordList.css';
+import './Styles/Buttons.css';
+import './Styles/Footer.css';
+
+import WordList from './Components/WordList/WordList';
+import Header from './Components/Header/Header';
+import Footer from './Components/Footer/Footer';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      <WordList/>
+      <Footer/>
+      
     </div>
   );
 }

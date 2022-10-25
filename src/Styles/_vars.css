@@ -1,0 +1,20 @@
+/* variables */
+
+:root {
+    /* colors */
+    --main-background-color: #345a6f;
+    --main-button-color: #2E5B72;
+    --delete-button-color: #ef3d2f;
+    --save-button-color: #3e946d;
+    --disable-button-color: #6D8B9A;
+    --hover-color: #FEC959;
+    --main-font-color: #474848;
+    --secondary-color: #f8f4f1;
+    --aux-color: #2E5B72;
+
+    /* colors */
+
+    /* fonts */
+    --main-font-family: 'Montserrat', sans-serif;
+    /* fonts */
+}
