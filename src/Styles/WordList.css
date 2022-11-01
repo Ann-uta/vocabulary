@@ -90,12 +90,13 @@ input:hover {
 @media screen and (max-width: 414px) {
     thead th {
         font-size: 1rem;
-        padding: 1vh 0.3vh;
+        padding: 1vh 0.1vh;
     }
 
     td {
+        width: 110px;
         font-size: 0.7rem;
-        padding: 0.5rem 0.15rem;
+        padding: 0.2rem 0px;
     }
 
     td input {
