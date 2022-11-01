@@ -27,11 +27,6 @@ tbody tr:nth-child(odd) {
     background-color: var(--disable-button-color);
 }
 
-/*tr:hover td {
-    background-color: var(--hover-color);
-    transition: 0.3s ease-in-out;
-}*/
-
 table {
     border: 1px solid var(--main-font-color);
     border-collapse: collapse;
@@ -39,6 +34,7 @@ table {
 }
 
 td {
+    width: 220px;
     border: 1px solid var(--main-font-color);
     padding: 1vh 2vh;
 }
@@ -73,7 +69,8 @@ input:hover {
     }
 
     td {
-        padding: 0.5rem 1vh;
+        width: 135px;
+        padding: 0.5rem 0.5vh;
     }
 
     td input {
@@ -106,20 +103,3 @@ input:hover {
         padding: 0.2rem;
     }
 }
-
-/*@media screen and (max-width: 280px) {
-    thead th {
-        font-size: 0.7rem;
-        padding: 0.5vh 0.2vh;
-    }
-
-    td {
-        font-size: 0.7rem;
-        padding: 0.1rem 0.05rem;
-    }
-
-    td input {
-        max-width: 70px;
-        padding: 0.15rem;
-    }
-}*/

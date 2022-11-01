@@ -36,6 +36,16 @@
     background-color: #be2f24;
 }
 
+@media screen and (max-width: 1280px) {
+
+    .edit-btn,
+    .delete-btn,
+    .save-btn,
+    .cancel-btn {
+        padding: 0.5vh 0.5vh;
+    }
+}
+
 @media screen and (max-width: 414px) {
 
     .edit-btn,

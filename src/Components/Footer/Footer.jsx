@@ -1,4 +1,3 @@
-//import './Footer.css';
 import logo from '../Header/logo.svg';
 
 export default function Footer() {
