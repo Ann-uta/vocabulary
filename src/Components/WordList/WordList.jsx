@@ -15,8 +15,7 @@ export default function WordList () {
                 english={word.english}
                 transcription={word.transcription}
                 russian={word.russian}
-                tags={word.tags}
-                isEdit={word.isEdit}/>                       
+                tags={word.tags}/>                       
                 )}
                 </tbody>
             </table>
@@ -24,15 +23,3 @@ export default function WordList () {
         
     )
 }
-/*isEdit
-                    <InputTableRow english={word.english}
-                    transcription={word.transcription}
-                    russian={word.russian}
-                    tags={word.tags}
-                    isEdit={word.isEdit}/>
-                    
-                    <TableRow key={word.id}
-                english={word.english}
-                transcription={word.transcription}
-                russian={word.russian}
-                tags={word.tags}/>         */

@@ -1,0 +1,39 @@
+.card-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card__item {
+    width: 280px;
+    flex-shrink: 1;
+    border: 1px solid var(--main-font-color);
+    border-radius: 30px;
+    margin: 5px auto;
+    background-color: var(--secondary-color);
+    padding-bottom: 20px;
+    font-family: inherit;
+}
+
+.card__english,
+.card__russian {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.card__transcription {
+    font-size: 1.5rem;
+}
+
+.card__russian {
+    color: var(--main-button-color);
+    font-weight: 500;
+}
+
+.card__btn {
+    background-color: var(--main-button-color);
+    color: var(--secondary-color);
+    font-family: inherit;
+    font-size: 1rem;
+    border-radius: 5px;
+    padding: 1vh 1vw;
+}

@@ -5,16 +5,14 @@
     "transcription":"[ˈfɪŋɡə]",
     "russian":"палец",
     "tags":"анатомия",
-    "tags_json":"[\"u0430u043du0430u0442u043eu043cu0438u044f\"]",    
-    "isEdit": true
+    "tags_json":"[\"u0430u043du0430u0442u043eu043cu0438u044f\"]"
 },{
     "id":"12130",
     "english":"argument",
     "transcription":"[ˈɑːgjʊmənt]",
     "russian":"аргумент",
     "tags":"IT",
-    "tags_json":"[\"IT\"]",
-    "isEdit": true
+    "tags_json":"[\"IT\"]"
 },{
     "id":"12136",
     "english":"hardware",

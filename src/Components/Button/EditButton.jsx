@@ -1,5 +1,11 @@
 //import './Buttons.css';
+import { useState } from "react";
 
 export default function EditButton() {
-    return <button className="edit-btn">Edit</button>;
+    const [isEdit, setIsEdit] = useState(false);
+
+   function onEditClick() {
+    setIsEdit(!isEdit)
+   }
+    return <button className="edit-btn" onClick={onEditClick}>Edit</button>;
 }
