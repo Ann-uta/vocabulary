@@ -14,7 +14,7 @@ export default function Card (props) {
             <p className='card__english'>{props.english}</p>
             <p className= 'card__transcription'>{props.transcription}</p>                
             {isCheck
-                ? <div className='card__russian'>{props.russian}</div>
+                ? <div className='card__russian'onClick={onClick}>{props.russian}</div>
                 : <button className='card__btn' onClick={onClick}>Проверить</button>
             }                
         </div>        

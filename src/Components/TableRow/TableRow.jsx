@@ -5,33 +5,44 @@ import SaveButton from '../Button/SaveButton';
 import { useState } from 'react';
 
 export default function TableRow(props) {
+    const {
+        english,
+        transcription,
+        russian,
+        tags
+    } = props
     const [isEdit, setIsEdit] = useState(false);
-    const [isCancel, setIsCancel] = useState(false);
+    const [inputText, setInputText] = useState (props)    
 
     function onEditClick() {
     setIsEdit(!isEdit)
-    setIsCancel(!isCancel)
     }
     function onCancelClick() {
-    setIsCancel(!isCancel)
-    setIsEdit(!isEdit)
+        setInputText(props)
+        setIsEdit(!isEdit)
     }
 
+    function changeInputText(event) {
+        setInputText({...inputText,
+            [event.target.name]:event.target.value
+    });
+    }
+    
     return (
         <tr className='row'>
-        {isEdit && isCancel
+        {isEdit
         ? <>
-            <td><input type="text" defaultValue={props.english} /></td>
-            <td><input type="text" defaultValue={props.transcription} /></td>
-            <td><input type="text" defaultValue={props.russian} /></td>
-            <td><input type="text" defaultValue={props.tags} /></td>
+            <td><input onChange={changeInputText} type="text" value={inputText.english} name={'english'}/></td>
+            <td><input onChange={changeInputText} type="text" value={inputText.transcription} name={'transcription'}/></td>
+            <td><input onChange={changeInputText} type="text" value={inputText.russian} name={'russian'}/></td>
+            <td><input onChange={changeInputText} type="text" value={inputText.tags} name={'tags'} /></td>
             <td><SaveButton/>
             <button className="cancel-btn" onClick={onCancelClick}>Cancel</button></td></>
         : <>
-            <td>{props.english}</td>
-            <td>{props.transcription}</td>
-            <td>{props.russian}</td>
-            <td>{props.tags}</td>
+            <td>{english}</td>
+            <td>{transcription}</td>
+            <td>{russian}</td>
+            <td>{tags}</td>
             <td><button className="edit-btn" onClick={onEditClick}>Edit</button>
             <DeleteButton/></td>
         </>

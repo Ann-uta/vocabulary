@@ -1,0 +1,32 @@
+.gallery {
+    max-width: 500px;
+    margin: auto;
+}
+
+.slider {
+    display: flex;
+    align-items: center;
+}
+
+.slider__button {
+    width: 30px;
+}
+
+.slider__button img {
+    width: 30px;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.slider__button_right {
+    rotate: 180deg;
+}
+
+.slider__button img:hover {
+    transform: scale(1.25);
+    transition: 0.5s ease-in-out;
+}
+
+.slider__count {
+    padding-top: 5px;
+}
