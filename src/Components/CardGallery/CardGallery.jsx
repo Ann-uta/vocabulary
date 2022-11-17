@@ -2,6 +2,7 @@
 //import Card from '../Card/Card';
 //import wordsData from '../../wordsData.json';
 import arrow from './arrow.png'
+import { useEffect } from 'react';
 
 export default function CardGallery(props){
 let {index = 0,

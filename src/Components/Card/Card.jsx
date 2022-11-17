@@ -1,5 +1,5 @@
 import '../../Styles/Card.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 //import wordsData from '../../wordsData.json';
 
 export default function Card (props) {
@@ -8,6 +8,9 @@ export default function Card (props) {
    function onClick() {
     setIsCheck(!isCheck)
    }
+   useEffect(() => {
+    setIsCheck(false)
+}, [props.english])
 
     return (
         <div className='card__item'>

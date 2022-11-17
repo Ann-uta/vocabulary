@@ -18,6 +18,28 @@ import CardGallery from './Components/CardGallery/CardGallery';
 
 function App() { 
   const [position, setPosition] = useState(0);
+  
+ /* useEffect(() => { 
+    shuffle(wordsData);    
+}, [])
+//как-то надо передать в стейт рандомный номер карточки, чтобы он сразу поставил ее первой
+// т.е. надо сначала перемешать карточки, а потом отрисовать первую.
+
+function shuffle(wordsData) {
+  let currentIndex = wordsData.length, temporaryValue, randomIndex;
+
+  while (0 !== currentIndex) {
+
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    temporaryValue = wordsData[currentIndex];
+    wordsData[currentIndex] = wordsData[randomIndex];
+    wordsData[randomIndex] = temporaryValue;
+  }
+
+  return wordsData;
+}*/
 
   function onPrevClick() {    
     // if (position < 0){
@@ -41,7 +63,7 @@ function App() {
         nextCard={onNextClick}
         index={position}
         words={wordsData}
-        total={wordsData.length}
+        total={wordsData.length}        
         >  
           <Card
             english={wordsData[position].english}
