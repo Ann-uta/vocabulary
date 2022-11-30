@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 
 export default function NoMatch () { 
@@ -9,7 +8,7 @@ export default function NoMatch () {
     
     return (
         <div className='nomatch-container'>
-            <div className='card__item'>
+            <div className='card__item'>                
                 <p className='card__english'>404</p><h2>Page not found</h2>
                 <div className='card__translate'>               
                     {isCheck

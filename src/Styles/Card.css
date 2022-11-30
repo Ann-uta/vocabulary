@@ -48,6 +48,7 @@
     border-radius: 5px;
     padding: 1vh 1.5vw;
     border: none;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 414px) {

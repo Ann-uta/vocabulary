@@ -2,6 +2,10 @@
     margin: auto auto;
 }
 
+.gallery_wrap h1 {
+    font-size: 3rem;
+}
+
 .gallery {
     max-width: 32rem;
     margin: auto auto;
@@ -37,7 +41,7 @@
 }
 
 .slider__count {
-    padding-top: 5px;
+    padding: 7px;
 }
 
 @media screen and (max-width: 425px) {
