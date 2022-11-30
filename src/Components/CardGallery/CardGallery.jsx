@@ -2,7 +2,7 @@
 //import Card from '../Card/Card';
 //import wordsData from '../../wordsData.json';
 import arrow from './arrow.png'
-import { useEffect } from 'react';
+//import { useEffect } from 'react';
 
 export default function CardGallery(props){
 let {index = 0,
@@ -32,6 +32,8 @@ let count = index+1;
  }*/
  //---
     return (
+      <div className='gallery_wrap'>
+        <h1>Game</h1>
         <div className='gallery'>
             <div className="slider"><div className='slider__button'>
                 {count !== 1 &&  <img onClick={prevCard} src={arrow} alt="left" />}</div>                    
@@ -39,7 +41,7 @@ let count = index+1;
                 {count !== total && <img onClick={nextCard} src={arrow} alt="right" />} </div>
             </div>
             <div className='slider__count'>{count}/{total}</div>
-        </div>
+        </div></div>
         )        
 }
 

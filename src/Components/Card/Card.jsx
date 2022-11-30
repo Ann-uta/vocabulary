@@ -15,11 +15,13 @@ export default function Card (props) {
     return (
         <div className='card__item'>
             <p className='card__english'>{props.english}</p>
-            <p className= 'card__transcription'>{props.transcription}</p>                
-            {isCheck
-                ? <div className='card__russian'onClick={onClick}>{props.russian}</div>
-                : <button className='card__btn' onClick={onClick}>Проверить</button>
-            }                
+            <p className= 'card__transcription'>{props.transcription}</p>
+            <div className='card__translate'>               
+                {isCheck
+                    ? <div className='card__russian'onClick={onClick}>{props.russian}</div>
+                    : <button className='card__btn' onClick={onClick}>Проверить</button>
+                }
+            </div>                 
         </div>        
     )
 }

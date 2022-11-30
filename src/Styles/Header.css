@@ -5,12 +5,24 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+}
+
+.header__menu ul {
+    margin-right: 10px;
 }
 
 .header__menu li {
     list-style-type: none;
     display: inline-flex;
     padding-right: 2vw;
+    font-size: 1.5rem;
+}
+
+.header__menu li:hover {
+    color: var(--hover-color);
 }
 
 .header__menu a {
@@ -19,13 +31,27 @@
 }
 
 .header__logo {
-    max-width: 7vw;
-    padding: 1vh 0 1vh 2vw;
+    width: 5rem;
+    padding: 1vw 0 1vw 2vw;
 }
 
-@media screen and (max-width: 414px) {
+/*.header__logo img {
+    min-width: 2vw;
+}*/
 
-    .header {
-        font-size: 0.7rem;
+@media screen and (max-width: 767px) {
+
+    .header__menu li {
+        font-size: 1rem;
+    }
+
+    .header__logo {
+        width: 3rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .header__menu li {
+        font-size: 0.8rem;
     }
 }

@@ -5,7 +5,7 @@ import TableRow from '../TableRow/TableRow';
 
 export default function WordList () {
     return (
-        <div className='table-wrap'>
+        <div className='table-wrap' id='up'>
             <table className='table'>
                 <TableHead/>
                 <tbody>

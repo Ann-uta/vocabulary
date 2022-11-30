@@ -6,20 +6,28 @@ import './Styles/WordList.css';
 import './Styles/Buttons.css';
 import './Styles/Footer.css';
 import './Styles/CardGallery.css';
+import './Styles/NoMatch.css';
 
 import { useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
+
 import WordList from './Components/WordList/WordList';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import Card from './Components/Card/Card';
 import wordsData from './wordsData.json';
 import CardGallery from './Components/CardGallery/CardGallery';
+import NoMatch from './Components/NoMatch/NoMatch';
 
 
 function App() { 
   const [position, setPosition] = useState(0);
   
- /* useEffect(() => { 
+/* useEffect(() => { 
     shuffle(wordsData);    
 }, [])
 //как-то надо передать в стейт рандомный номер карточки, чтобы он сразу поставил ее первой
@@ -55,38 +63,44 @@ function shuffle(wordsData) {
     setPosition (position+1)
   //}
 }
-  return (    
+  return (
+    <Router>  
     <div className="App">      
-      <Header/>     
-      <CardGallery
-        prevCard={onPrevClick}
-        nextCard={onNextClick}
-        index={position}
-        words={wordsData}
-        total={wordsData.length}        
-        >  
-          <Card
-            english={wordsData[position].english}
-            transcription={wordsData[position].transcription}
-            russian={wordsData[position].russian}/>          
-      </CardGallery>   
-        
-            
-      <WordList/>      
-      <div className='card-wrap'>
-      {
-            wordsData.map((word) =>
-            <Card key={word.id} english={word.english}
-            transcription={word.transcription}
-            russian={word.russian}/>
-        )}
-      </div>
-      <Footer/>
-      
+      <Header/>
+      <main className='main'>
+      <Routes>        
+          <Route path="/game"
+          element={<CardGallery
+              prevCard={onPrevClick}
+              nextCard={onNextClick}
+              index={position}
+              words={wordsData}
+              total={wordsData.length}        
+              >  
+                <Card
+                  english={wordsData[position].english}
+                  transcription={wordsData[position].transcription}
+                  russian={wordsData[position].russian}/>          
+            </CardGallery>}/>
+          <Route path="/flachcards"
+            element={<div className='container'><h1 className='caption'>Flachcards</h1>
+              <div className='card-wrap'>             
+              {
+                wordsData.map((word) =>
+                <Card key={word.id} english={word.english}
+                transcription={word.transcription}
+                russian={word.russian}/>
+              )}
+              </div></div>}/>
+                <Route path="/"
+            element={<WordList/>}/> 
+            <Route path="*" element={<NoMatch />} />       
+      </Routes>
+      </main>
+      <Footer/>      
     </div>
+    </Router>
   );
 }
 
 export default App;
-
-/* */

@@ -1,23 +1,28 @@
 .footer {
     width: 100%;
+    height: fit-content;
     background-color: var(--main-background-color);
     color: var(--secondary-color);
     display: block;
 }
 
 .footer__text {
-    padding: 5px 0 15px 0;
+    padding: 5px 0 10px 0;
     letter-spacing: 1.5px;
 }
 
 .footer__logo {
-    width: 5vw;
-    padding-top: 20px;
+    width: 4rem;
+    padding-top: 10px;
 }
 
 @media screen and (max-width: 414px) {
 
     .footer {
         font-size: 0.7rem;
+    }
+
+    .footer__logo {
+        width: 2rem;
     }
 }

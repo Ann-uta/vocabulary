@@ -1,0 +1,27 @@
+.nomatch-container {
+    margin: 30px auto;
+
+}
+
+.nomatch-container .card__english {
+    font-size: 3rem;
+    margin: 20px auto;
+}
+
+.nomatch-container .card__item {
+    zoom: 150%;
+    height: 13rem;
+}
+
+
+@media screen and (max-width: 282px) {
+    .nomatch-container .card__item {
+        width: 15rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .nomatch-container .card__item {
+        zoom: 100%;
+    }
+}

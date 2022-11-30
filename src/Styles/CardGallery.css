@@ -1,6 +1,14 @@
+.gallery_wrap {
+    margin: auto auto;
+}
+
 .gallery {
-    max-width: 500px;
-    margin: auto;
+    max-width: 32rem;
+    margin: auto auto;
+}
+
+.gallery .card__item {
+    zoom: 150%;
 }
 
 .slider {
@@ -9,11 +17,12 @@
 }
 
 .slider__button {
-    width: 30px;
+    width: 1.875rem;
+    margin: 20px;
 }
 
 .slider__button img {
-    width: 30px;
+    width: 1.875rem;
     transition: 0.5s ease-in-out;
     cursor: pointer;
 }
@@ -29,4 +38,22 @@
 
 .slider__count {
     padding-top: 5px;
+}
+
+@media screen and (max-width: 425px) {
+    .slider__button {
+        margin: 8px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .gallery .card__item {
+        zoom: 100%;
+    }
+}
+
+@media screen and (max-width: 358px) {
+    .gallery {
+        max-width: 18rem;
+    }
 }

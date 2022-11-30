@@ -2,11 +2,14 @@
     display: flex;
     flex-wrap: wrap;
     width: 80vw;
-    margin: auto;
+}
+
+.container {
+    margin: 0 auto;
 }
 
 .card__item {
-    width: 280px;
+    width: 17.5rem;
     flex-shrink: 1;
     border: 1px solid var(--main-font-color);
     border-radius: 30px;
@@ -27,6 +30,11 @@
     font-size: 1.5rem;
 }
 
+.card__translate {
+    max-width: 280px;
+    height: 2rem;
+}
+
 .card__russian {
     color: var(--main-button-color);
     font-weight: 500;
@@ -38,6 +46,13 @@
     font-family: inherit;
     font-size: 1rem;
     border-radius: 5px;
-    padding: 1vh 1vw;
+    padding: 1vh 1.5vw;
     border: none;
+}
+
+@media screen and (max-width: 414px) {
+    .card__btn {
+        font-size: 0.8rem;
+        padding: 1vh 2vw;
+    }
 }
