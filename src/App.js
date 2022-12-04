@@ -26,7 +26,7 @@ import NoMatch from './Components/NoMatch/NoMatch';
 
 function App() { 
   const [position, setPosition] = useState(0);
-  
+
 /* useEffect(() => { 
     shuffle(wordsData);    
 }, [])
@@ -64,7 +64,7 @@ function shuffle(wordsData) {
   //}
 }
   return (
-    <Router>  
+    <Router>
     <div className="App">      
       <Header/>
       <main className='main'>
@@ -80,7 +80,8 @@ function shuffle(wordsData) {
                 <Card
                   english={wordsData[position].english}
                   transcription={wordsData[position].transcription}
-                  russian={wordsData[position].russian}/>          
+                  russian={wordsData[position].russian}
+                  />          
             </CardGallery>}/>
           <Route path="/flachcards"
             element={<div className='container'><h1 className='caption'>Flachcards</h1>

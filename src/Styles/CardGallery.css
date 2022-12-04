@@ -1,5 +1,6 @@
 .gallery_wrap {
     margin: auto auto;
+    transform: scale(130%);
 }
 
 .gallery_wrap h1 {
@@ -9,10 +10,6 @@
 .gallery {
     max-width: 32rem;
     margin: auto auto;
-}
-
-.gallery .card__item {
-    zoom: 150%;
 }
 
 .slider {
@@ -42,6 +39,7 @@
 
 .slider__count {
     padding: 7px;
+    margin-top: 50px;
 }
 
 @media screen and (max-width: 425px) {
@@ -51,8 +49,14 @@
 }
 
 @media screen and (max-width: 500px) {
-    .gallery .card__item {
-        zoom: 100%;
+    .gallery_wrap {
+        transform: scale(100%);
+    }
+}
+
+@media screen and (max-height: 800px) {
+    .gallery_wrap {
+        transform: scale(100%);
     }
 }
 

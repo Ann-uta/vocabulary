@@ -1,20 +1,22 @@
 import logo from './logo.svg';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
+//let activeClassName = "active";
 
 export default function Header() {
     return (
-        <header className="header" id='up'>
-            <div><Link to="/"><img className='header__logo' src={logo} alt="logo" /></Link></div>
+        <header className="header" id="up">
+            <div><NavLink to="/"><img className='header__logo' src={logo} alt="logo" /></NavLink></div>
             <nav className='header__menu'>
                 <ul>
                     <li>
-                        <Link to="/">Home</Link>
+                        <NavLink to="/">Home</NavLink>
                     </li>
                     <li>
-                        <Link to="/flachcards">Flachcards</Link>
+                        <NavLink to="/flachcards">Flachcards</NavLink>
                     </li>
                     <li>
-                        <Link to="/game">Game</Link>
+                        <NavLink to="/game">Game</NavLink>
                     </li>
                 </ul>
             </nav>
