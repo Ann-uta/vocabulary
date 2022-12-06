@@ -22,6 +22,7 @@ import Card from './Components/Card/Card';
 import wordsData from './wordsData.json';
 import CardGallery from './Components/CardGallery/CardGallery';
 import NoMatch from './Components/NoMatch/NoMatch';
+import Flachcards from './Components/Flashcards/Flashcards';
 
 
 function App() { 
@@ -84,15 +85,8 @@ function shuffle(wordsData) {
                   />          
             </CardGallery>}/>
           <Route path="/flachcards"
-            element={<div className='container'><h1 className='caption'>Flachcards</h1>
-              <div className='card-wrap'>             
-              {
-                wordsData.map((word) =>
-                <Card key={word.id} english={word.english}
-                transcription={word.transcription}
-                russian={word.russian}/>
-              )}
-              </div></div>}/>
+            element={<Flachcards/>}
+            />
                 <Route path="/"
             element={<WordList/>}/> 
             <Route path="*" element={<NoMatch />} />       
