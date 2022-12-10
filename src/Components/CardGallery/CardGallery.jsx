@@ -1,57 +1,39 @@
-//import { useState } from 'react';
-//import Card from '../Card/Card';
-//import wordsData from '../../wordsData.json';
-import arrow from './arrow.png'
-//import { useEffect } from 'react';
+import { useState } from 'react';
+import Card from '../Card/Card';
+import wordsData from '../../wordsData.json';
+import arrow from './arrow.png';
 
 export default function CardGallery(props){
 let {index = 0,
-    prevCard,
-    nextCard,
-    //words,
-    total,
+   // total
 } = props;
-let count = index+1;
 
-//---код без children--
-  /*const [currentIndex, setIndex] = useState(index); 
+const [currentIndex, setIndex] = useState(index);
 
-  function prevCard() {
-    setIndex(currentIndex-1);      
-      
-      // if (nextIndex > wordsData.length){
-      //   index = 0;
-      // }
-      
-    }
-  function nextCard(){
-    setIndex(currentIndex+1)
-//     if (nextIndex < 0) {
-//       index = wordsData.length - 1;
-//    }
- }*/
- //---
+function onPrevClick() { 
+  setIndex (currentIndex-1);
+}
+function onNextClick() {
+  setIndex (currentIndex+1);
+}
+let count = currentIndex+1;
+
     return (
       <div className='gallery_wrap'>
         <h1>Game</h1>
         <div className='gallery'>
             <div className="slider"><div className='slider__button'>
-                {count !== 1 &&  <img onClick={prevCard} src={arrow} alt="left" />}</div>                    
-                {props.children} <div className='slider__button slider__button_right'>
-                {count !== total && <img onClick={nextCard} src={arrow} alt="right" />} </div>
+                {count !== 1 &&  <img  onClick={onPrevClick} src={arrow} alt="left" />}</div>
+                <Card {...wordsData[currentIndex]}
+                  /*english={wordsData[currentIndex].english}
+                  transcription={wordsData[currentIndex].transcription}
+                  russian={wordsData[currentIndex].russian}*/
+                  
+                />           
+                <div className='slider__button slider__button_right'>
+                {count !== wordsData.length && <img onClick={onNextClick} src={arrow} alt="right" />} </div>
             </div>
-            <div className='slider__count'>{count}/{total}</div>
+            <div className='slider__count'>{count}/{wordsData.length}</div>
         </div></div>
         )        
-}
-
-
-/*<Card
-            english={words[index].english}
-            transcription={words[index].transcription}
-            russian={words[index].russian}
-        />*/
-
-        /*{index=total
-                    ? null 
-                    : <div className='slider__button slider__button_right'><img onClick={nextCard} src={arrow} alt="right" /></div>} */
+    }

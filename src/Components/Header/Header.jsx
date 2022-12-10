@@ -1,9 +1,7 @@
 import logo from './logo.svg';
 import { NavLink } from "react-router-dom";
 
-//let activeClassName = "active";
-
-export default function Header() {
+export default function Header(props) {    
     return (
         <header className="header" id="up">
             <div><NavLink to="/"><img className='header__logo' src={logo} alt="logo" /></NavLink></div>

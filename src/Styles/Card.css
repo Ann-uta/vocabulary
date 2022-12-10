@@ -15,6 +15,7 @@
     border-radius: 30px;
     margin: 10px auto;
     background-color: var(--secondary-color);
+    color: var(--main-background-color);
     padding-bottom: 20px;
     font-family: inherit;
     box-shadow: 5px 11px 23px 2px rgba(52, 90, 111, 0.57);
@@ -53,6 +54,11 @@
     padding: 1vh 1.5vw;
     border: none;
     cursor: pointer;
+}
+
+.card__btn:focus {
+    transform: scale(1.2);
+    transition: 0.5s ease-in-out;
 }
 
 @media screen and (max-width: 414px) {
