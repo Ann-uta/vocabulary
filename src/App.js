@@ -17,6 +17,7 @@ import Footer from './Components/Footer/Footer';
 import CardGallery from './Components/CardGallery/CardGallery';
 import NoMatch from './Components/NoMatch/NoMatch';
 import Flachcards from './Components/Flashcards/Flashcards';
+import Comments from './Components/Comments/Comments';
 
 function App() {   
   return (
@@ -34,7 +35,9 @@ function App() {
             />
                 <Route path="/"
             element={<WordList/>}/> 
-            <Route path="*" element={<NoMatch />} />       
+            <Route path="*" element={<NoMatch />} /> 
+            <Route path="comments" element={<Comments />} />   
+                 
       </Routes>
       </main>
       <Footer/>      
