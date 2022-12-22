@@ -42,6 +42,7 @@ export default function TableRow(props) {
 }
 
     function onSaveClick(event){
+        event.preventDefault();
         if (!inputText.english.match(reEng)){
             setError({...error,
                 english: 'Только латинские буквы'                
