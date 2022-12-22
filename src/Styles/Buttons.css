@@ -36,6 +36,11 @@
     background-color: #be2f24;
 }
 
+button:disabled {
+    background-color: grey;
+
+}
+
 @media screen and (max-width: 1280px) {
 
     .edit-btn,

@@ -1,14 +1,15 @@
 import { useState } from 'react';
 
 let nextId = 0;
+const filterWords = ["viagra", "xxx"];
+
 export default function Comments(){
    const [text, setText] = useState ('');
-   const [array, setArray] = useState([]);
+   const [comments, setComments] = useState([]);
    const [isError, setError] = useState(true)
 
     function onBtnClick(e){
         e.preventDefault();
-        const filterWords = ["viagra", "xxx"];
         let filteredText = text.trim();
         for (let word of filterWords) {
             let reg = new RegExp(word, 'ig');
@@ -17,15 +18,15 @@ export default function Comments(){
       //проверка на пустоту
         setText('');
         if (filteredText){
-        setArray([
+            setComments([
             { id: nextId++, text: filteredText },
-            ...array          
+            ...comments          
         ]);
         setError('')
     } else {
         setError('Поле не должно быть пустым')
     }   
-    //    console.log(array)
+    //    console.log(comments)
 }
 
     
@@ -37,11 +38,11 @@ export default function Comments(){
         <div>
             <ul>
             {
-                array.map((item)=>                
+                comments.map((item)=>                
                     <li className='list' key={item.id}>{item.text}
                         <button onClick={() => 
-                        {setArray(
-                            array.filter(i =>
+                        {setComments(
+                            comments.filter(i =>
                                 i.id !== item.id
                     ));
                         }}>Удалить</button>
