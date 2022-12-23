@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 export default function Header(props) {    
     return (
         <header className="header" id="up">
-            <div><NavLink to="/"><img className='header__logo' src={logo} alt="logo" /></NavLink></div>
+            <div className='img-wrap'><NavLink to="/"><img className='header__logo' src={logo} alt="logo" /></NavLink></div>
             <nav className='header__menu'>
                 <ul>
                     <li>
