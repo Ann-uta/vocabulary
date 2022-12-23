@@ -36,9 +36,9 @@
     background-color: #be2f24;
 }
 
-button:disabled {
+button:disabled,
+button:hover:disabled {
     background-color: grey;
-
 }
 
 @media screen and (max-width: 1280px) {

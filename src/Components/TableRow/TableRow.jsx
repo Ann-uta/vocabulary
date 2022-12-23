@@ -53,7 +53,6 @@ export default function TableRow(props) {
         })
         } else {            
             setError({...error,[event.target.name]: ''})
-            console.log(inputText)
             setIsEdit(false)
         }
 }
