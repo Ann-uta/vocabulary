@@ -1,16 +1,21 @@
 import Card from "../Card/Card";
-import wordsData from "../../wordsData.json";
+//import wordsData from "../../wordsData.json";
+import { useContext } from 'react';
+import { DataContext } from '../Context/Context';
 
 
-export default function Flachcards() {
+export default function Flachcards() {    
+const data = useContext(DataContext)
+
     return (
         <div className='container'><h1 className='caption'>Flachcards</h1>
             <div className='card-wrap'>             
             {
-                wordsData.map((word) =>
+                data.map((word) =>
                 <Card key={word.id} english={word.english}
                 transcription={word.transcription}
                 russian={word.russian}/>
             )}
-            </div></div>)}
-    
+            </div>
+        </div>)
+}    

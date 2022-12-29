@@ -1,17 +1,12 @@
-import { useState } from 'react';
+import { useState  } from 'react';
 
 const reEng = new RegExp(/^[A-Za-z&-\s]+$/);
 const reRu = new RegExp(/^[А-Яа-яЁё&-\s]+$/);
 
 export default function TableRow(props) {
-    /*const {
-        english,
-        transcription,
-        russian,
-        tags
-    } = props*/
+
     const [isEdit, setIsEdit] = useState(false);
-    const [inputText, setInputText] = useState (props);    
+    const [inputText, setInputText] = useState (props);
     let [error, setError] = useState({
         english:'',
         transcription:'',
@@ -56,6 +51,9 @@ export default function TableRow(props) {
             setIsEdit(false)
         }
 }
+
+//useEffect
+
 let disabledBtn = Object.values(error).some(el => el);
 
     return (
