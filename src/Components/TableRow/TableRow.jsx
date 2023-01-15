@@ -1,6 +1,5 @@
 import { useState, useContext  } from 'react';
 import { DataContext } from '../Context/Context';
-//import Input from '../Input/Input';
 
 const reEng = new RegExp(/^[A-Za-z&-\s]+$/);
 const reRu = new RegExp(/^[А-Яа-яЁё&-\s]+$/);
@@ -17,7 +16,7 @@ export default function TableRow(props) {
     });
     
     function onEditClick() {
-    setIsEdit(true)
+        setIsEdit(true)
     }
     function onCancelClick() {
         setInputText(props)
@@ -50,8 +49,22 @@ export default function TableRow(props) {
         })
         } else {            
             setError({...error,[event.target.name]: ''})
+            fetch(`/api/words/${inputText.id}/update`,{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                },
+                body: JSON.stringify(inputText),
+                })
+                .then((response)=>{
+                    if (response.ok) {
+                        return response.json();
+                    }else{
+                        throw new Error ('Something went wrong..')
+                    }
+                })
+                .then (() => { getData() })
             setIsEdit(false)
-        //    setInputText()
         }        
     }
 
