@@ -5,7 +5,7 @@ const reEng = new RegExp(/^[A-Za-z&-\s]+$/);
 const reRu = new RegExp(/^[А-Яа-яЁё&-\s]+$/);
 
 export default function TableRow(props) {
-    const { data, setData, getData, deleteData } = useContext(DataContext);
+    const { data, setData, getData } = useContext(DataContext);
     const [isEdit, setIsEdit] = useState(false);
     const [inputText, setInputText] = useState (props);
     let [error, setError] = useState({
@@ -64,8 +64,8 @@ export default function TableRow(props) {
                     }
                 })
                 .then (() => { getData() })
-            setIsEdit(false)
-        }        
+                setIsEdit(false)
+        }       
     }
 
     const onDeleteClick = () => {
@@ -75,7 +75,7 @@ export default function TableRow(props) {
                 'Content-Type': 'application/json;charset=utf-8'
             },
         })
-        .then (() => { getData() })
+        .then (() => { getData()})
     }
 
 let disabledBtn = Object.values(error).some(el => el);

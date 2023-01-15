@@ -1,27 +1,23 @@
 import '../../Styles/WordList.css';
 import TableHead from '../TableHead/TableHead';
 import TableRow from '../TableRow/TableRow';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { DataContext } from '../Context/Context';
 import NewWord from '../NewWord/NewWord';
 import Modal from '../Modal/Modal';
-//import Loading from '../Loading/Loading';
 
 export default function WordList () {    
-    const { data, setData } = useContext(DataContext);
-    const [modalActive, setModalActive] = useState(false)
-    function onAddClick(){
-
-}
-
+    const { data, setModalActive } = useContext(DataContext);
+    
 if(!data){
     return;
 }
-    return (
+
+    return (        
         <div className='table-wrap' id='up'>
             <table className='table'>
-                <TableHead/>
-                <tbody>
+                <TableHead/>                
+                <tbody>                    
                 {
                 data.map((word) =>
                 <TableRow
@@ -35,7 +31,7 @@ if(!data){
                 </tbody>
             </table>
             <button className="add-btn" onClick={() => setModalActive(true)}>Add new word</button>
-            <Modal active={modalActive} setActive={setModalActive}><NewWord /></Modal>
+            <Modal  ><NewWord /></Modal>
         </div>
         
     )

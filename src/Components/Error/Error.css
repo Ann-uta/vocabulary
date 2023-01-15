@@ -1,0 +1,14 @@
+.error_wrap {
+    text-align: center;
+    /* padding-top: 20vh;*/
+    overflow: hidden;
+}
+
+.error_wrap img {
+    width: 6rem;
+}
+
+.error_wrap h1,
+p {
+    color: var(--main-background-color);
+}

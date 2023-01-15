@@ -66,6 +66,10 @@ input:focus {
     color: var(--secondary-color);
 }
 
+tbody tr:nth-child(even) .errorMsg {
+    color: var(--disable-button-color);
+}
+
 .add-btn {
     width: fit-content;
     background-color: var(--hover-color);

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+//import { useEffect } from 'react';
 import { useState, useContext } from 'react';
 import Card from '../Card/Card';
 import { DataContext } from '../Context/Context';
@@ -6,7 +6,7 @@ import arrow from './arrow.png';
 
 export default function CardGallery(){
 let index = 0;
-const { data, setData, getData } = useContext(DataContext)//
+const { data, setData } = useContext(DataContext)//
 const [currentIndex, setIndex] = useState(index);
 
 function onPrevClick() { 

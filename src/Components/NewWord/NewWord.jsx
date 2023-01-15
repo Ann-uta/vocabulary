@@ -4,14 +4,14 @@ import { DataContext } from '../Context/Context';
 import "./NewWord.css"
 
 export default function NewWord(){
-    const { data, setData, reEng, reRu, getData } = useContext(DataContext);
+    const { reEng, reRu, getData, setModalActive } = useContext(DataContext);
+
     const defaultNewWord = {
         id:'',//???
         english:'',
         transcription:'',
         russian:'',
         tags:'',
-  //      tags_json:''//???
     }
     const [newWord, setNewWord] = useState (defaultNewWord);
     let [error, setError] = useState({
@@ -26,7 +26,6 @@ export default function NewWord(){
         russian:'',
         tags:''
     });
-    //const [isValid, setIsValid] = useState(true)
     
     function changeNewWord(e){
         setError({...error,[e.target.name]: ''})
@@ -41,11 +40,12 @@ export default function NewWord(){
             [e.target.name]:''})
     }
 }
-//как сделать закрытие окна по кнопке cancel без перезагрузки (как передать сюда setActive)???
-    function onCancelClick() {
+    function onCancelClick(e) {
+        e.preventDefault();
         setNewWord(defaultNewWord)
         setError('')
         setEmpty('')
+        setModalActive(false)
     }
     
     function onBlur(e){
@@ -89,7 +89,7 @@ export default function NewWord(){
                             throw new Error ('Something went wrong..')
                         }
                     })
-                    .then (() => { getData() })
+                    .then (() => { getData()})
                 }
             }                   
         
@@ -140,12 +140,3 @@ export default function NewWord(){
         </form>
     )
 }
-
-//disabled={isValid ? true : false}
-
-/*"id":"12136",
-    "english":"hardware",
-    "transcription":"[ˈhɑːdwɛə]",
-    "russian":"оборудование",
-    "tags":"IT",
-    "tags_json":"[\"IT\"]"*/

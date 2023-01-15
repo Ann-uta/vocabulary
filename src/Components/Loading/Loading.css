@@ -1,0 +1,7 @@
+.loading_wrap {
+    text-align: center;
+}
+
+.loading_wrap h1 {
+    color: var(--main-background-color);
+}

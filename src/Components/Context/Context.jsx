@@ -1,52 +1,50 @@
 import React, { useState, useEffect } from "react";
+import Loading from "../Loading/Loading";
+import Error from "../Error/Error";
+
 export const DataContext = React.createContext();
+
 
 export const DataContextProvider=({children})=>{
 const reEng = new RegExp(/^[A-Za-z&-\s]+$/);
 const reRu = new RegExp(/^[А-Яа-яЁё&-\s]+$/);
 
 const [data, setData] = useState([])
+const [isLoading, setIsLoading] = useState(false)
+const [error, setError] = useState(false)
+
+
+const [modalActive, setModalActive] = useState(false)
 
 //получаем данные с сервера
 const getData =() => {
-  fetch('/api/words')
+  fetch('/api/wordss')
         .then((response) => {
           if (response.ok) {   // Проверяем что код ответа 200
             return response.json()
           } else {
             throw new Error('Something went wrong ...');
       }})
-        .then((response) => {setData(response)})
-        
-}
-
-//изменяем слово на сервере
-const editData = (data) => {
-  fetch (`/api/${data.id}/update`, { //http://itgirlschool.justmakeit.ru
-    method: 'POST',
-    body: JSON.stringify(data),
-    }).then(()=>{
-      getData()
-    })
-}
+        .then((response) => {
+          setData(response)
+          setIsLoading(false)
+        })
+        .catch(setIsLoading(false))
+}// 
 
 useEffect(() => {
-  getData()
+  setIsLoading(true)
+  //getData()
+  setTimeout(() => getData(), 3000)
 }, [])
-//==
-/*const [currentIndex, setIndex] = useState(0);
-const id = data[currentIndex].id
-const [learned, setLearned] = useState([]);
 
-function addLearned(){
-  if (!learned.includes(id)){
-  setLearned([...learned, id]);
-}}*/
-//==
-const values = {data, setData, getData, reEng, reRu, editData}//addLearned, learned, currentIndex, setIndex
+const values = {data, setData, getData, reEng, reRu, modalActive, setModalActive}
 if(!data){
     return;
 }
+if (isLoading) return <Loading/>
+if (error) return <Error/>
+
 return (
     <DataContext.Provider value={values}>
         {children}

@@ -15,8 +15,3 @@
 img {
   max-width: 100%;
 }
-
-/*style for Comments*/
-.list:first-child {
-  color: red;
-}
