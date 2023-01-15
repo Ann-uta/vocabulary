@@ -1,0 +1,21 @@
+.new-word input {
+    margin: 20px auto;
+    width: 90%;
+    padding: 0.5rem;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: var(--main-font-color);
+    caret-color: var(--aux-color);
+    border-radius: 5px;
+    box-shadow: 6px 6px 29px 0px rgba(0, 0, 0, 0.06);
+    border: none;
+}
+
+.errorMsg {
+    margin-top: -18px;
+}
+
+.add-btns-container {
+    margin-top: 20px;
+}

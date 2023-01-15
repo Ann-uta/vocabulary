@@ -1,14 +1,12 @@
+import { useEffect } from 'react';
 import { useState, useContext } from 'react';
 import Card from '../Card/Card';
 import { DataContext } from '../Context/Context';
-//import wordsData from '../../wordsData.json';
 import arrow from './arrow.png';
 
 export default function CardGallery(){
 let index = 0;
-const data = useContext(DataContext)
-console.log('CardGallery', data)
-
+const { data, setData, getData } = useContext(DataContext)//
 const [currentIndex, setIndex] = useState(index);
 
 function onPrevClick() { 
@@ -19,7 +17,7 @@ function onNextClick() {
 }
 let count = currentIndex+1;
 
-const id = data[currentIndex].id
+const id = data[currentIndex].id //?????? не видит id при перезагрузке страницы game
 const [learned, setLearned] = useState([]);
 
 function addLearned(){
@@ -27,17 +25,13 @@ function addLearned(){
   setLearned([...learned, id]);
 }}
 
-    return (
+    return (      
       <div className='gallery_wrap'>
         <h1>Game</h1>
         <div className='gallery'>
             <div className="slider"><div className='slider__button'>
                 {count !== 1 &&  <img  onClick={onPrevClick} src={arrow} alt="left" />}</div>
-                <Card {...data[currentIndex]} addLearned={addLearned}
-                  /*english={wordsData[currentIndex].english}
-                  transcription={wordsData[currentIndex].transcription}
-                  russian={wordsData[currentIndex].russian}*/
-                  
+                <Card {...data[currentIndex]} addLearned={addLearned}                  
                 />           
                 <div className='slider__button slider__button_right'>
                 {count !== data.length && <img onClick={onNextClick} src={arrow} alt="right" />} </div>

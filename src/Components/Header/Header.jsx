@@ -16,9 +16,6 @@ export default function Header(props) {
                     <li>
                         <NavLink to="/game">Game</NavLink>
                     </li>
-                    <li>
-                        <NavLink to="/comments">Comments</NavLink>
-                    </li>
                 </ul>
             </nav>
         </header>

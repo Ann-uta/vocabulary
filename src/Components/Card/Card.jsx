@@ -1,9 +1,10 @@
 import '../../Styles/Card.css';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
-//import wordsData from '../../wordsData.json';
+import { DataContext } from '../Context/Context';
 
-export default function Card ({id, russian, english, transcription, addLearned}) {
+export default function Card ({id, russian, english, transcription, addLearned }) {
+    const { data, setData } = useContext(DataContext)
     const [isCheck, setIsCheck] = useState(false);
     const buttonRef = useRef(null);
     let location = useLocation();
@@ -12,8 +13,9 @@ export default function Card ({id, russian, english, transcription, addLearned})
         setIsCheck(!isCheck);
         if (location.pathname === '/game')
         addLearned();
-    }   
-    useEffect(() => {
+    } 
+    
+useEffect(() => {
     setIsCheck(false);
 }, [english])
 

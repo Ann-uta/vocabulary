@@ -1,44 +1,56 @@
 import React, { useState, useEffect } from "react";
-const DataContext = React.createContext();
+export const DataContext = React.createContext();
 
-//function DataContextProvider(props) {
- // const [data, setData] = useState({});
+export const DataContextProvider=({children})=>{
+const reEng = new RegExp(/^[A-Za-z&-\s]+$/);
+const reRu = new RegExp(/^[А-Яа-яЁё&-\s]+$/);
 
-  /*function loadData(){
-    fetch('/api/words')
+const [data, setData] = useState([])
+
+//получаем данные с сервера
+const getData =() => {
+  fetch('/api/words')
         .then((response) => {
-          if (response.ok) {   //Проверяем что код ответа 200
+          if (response.ok) {   // Проверяем что код ответа 200
             return response.json()
           } else {
             throw new Error('Something went wrong ...');
       }})
-        .then((response) => setData({ data: response }))
-    }     
-    useEffect(() => {
-      loadData()
-    },[])
+        .then((response) => {setData(response)})
+        
+}
 
-    if (!data){
-      <h1>Loading...</h1>    
-    }*/
-   /* const [words, setData] = useState([])   //===
+//изменяем слово на сервере
+const editData = (data) => {
+  fetch (`/api/${data.id}/update`, { //http://itgirlschool.justmakeit.ru
+    method: 'POST',
+    body: JSON.stringify(data),
+    }).then(()=>{
+      getData()
+    })
+}
 
-  useEffect(() =>{
-    fetch('http://itgirlschool.justmakeit.ru/api/words')
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data)
-      })
-  }, []);*/
-  //===
-  //if (error) {
-  //  return <p>{error.message}</p>;
-//}
-  /*return (
-    <DataContext.Provider value={ {data: data, loadData: loadData} }>
-      {props.children}
+useEffect(() => {
+  getData()
+}, [])
+//==
+/*const [currentIndex, setIndex] = useState(0);
+const id = data[currentIndex].id
+const [learned, setLearned] = useState([]);
+
+function addLearned(){
+  if (!learned.includes(id)){
+  setLearned([...learned, id]);
+}}*/
+//==
+const values = {data, setData, getData, reEng, reRu, editData}//addLearned, learned, currentIndex, setIndex
+if(!data){
+    return;
+}
+return (
+    <DataContext.Provider value={values}>
+        {children}
     </DataContext.Provider>
-  );
-}*/
+)
 
-export { DataContext };
+}

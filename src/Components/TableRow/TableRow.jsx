@@ -1,10 +1,12 @@
-import { useState  } from 'react';
+import { useState, useContext  } from 'react';
+import { DataContext } from '../Context/Context';
+//import Input from '../Input/Input';
 
 const reEng = new RegExp(/^[A-Za-z&-\s]+$/);
 const reRu = new RegExp(/^[А-Яа-яЁё&-\s]+$/);
 
 export default function TableRow(props) {
-
+    const { data, setData, getData, deleteData } = useContext(DataContext);
     const [isEdit, setIsEdit] = useState(false);
     const [inputText, setInputText] = useState (props);
     let [error, setError] = useState({
@@ -13,7 +15,7 @@ export default function TableRow(props) {
         russian:'',
         tags:''
     });
-
+    
     function onEditClick() {
     setIsEdit(true)
     }
@@ -49,15 +51,24 @@ export default function TableRow(props) {
         } else {            
             setError({...error,[event.target.name]: ''})
             setIsEdit(false)
-        }
-}
+        //    setInputText()
+        }        
+    }
 
-//useEffect
+    const onDeleteClick = () => {
+        fetch(`/api/words/${inputText.id}/delete`,{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+        })
+        .then (() => { getData() })
+    }
 
 let disabledBtn = Object.values(error).some(el => el);
 
-    return (
-        <tr className='row'>
+    return (         
+        <tr className='row'>  
         {isEdit
         ? <>
             <td><input className={error.english ? 'error':''}
@@ -88,9 +99,8 @@ let disabledBtn = Object.values(error).some(el => el);
             <td>{inputText.russian}</td>
             <td>{inputText.tags}</td>
             <td><button className="edit-btn" onClick={onEditClick}>Edit</button>
-                <button className='delete-btn'>Delete</button></td>
+                <button className='delete-btn' onClick={() => onDeleteClick(inputText.id)}>Delete</button></td>
         </>
-        }</tr>     
-                
+        }</tr>
     )
 }

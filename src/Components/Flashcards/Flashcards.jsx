@@ -1,11 +1,10 @@
 import Card from "../Card/Card";
-//import wordsData from "../../wordsData.json";
 import { useContext } from 'react';
 import { DataContext } from '../Context/Context';
 
 
 export default function Flachcards() {    
-const data = useContext(DataContext)
+const {data, setData}  = useContext(DataContext)
 
     return (
         <div className='container'><h1 className='caption'>Flachcards</h1>
