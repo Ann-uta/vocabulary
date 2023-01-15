@@ -11,14 +11,15 @@ const reRu = new RegExp(/^[А-Яа-яЁё&-\s]+$/);
 
 const [data, setData] = useState([])
 const [isLoading, setIsLoading] = useState(false)
-const [error, setError] = useState(false)
+const [error, setError] = useState(null)
 
 
 const [modalActive, setModalActive] = useState(false)
 
 //получаем данные с сервера
 const getData =() => {
-  fetch('/api/wordss')
+  setIsLoading(true)
+  fetch('/api/words')
         .then((response) => {
           if (response.ok) {   // Проверяем что код ответа 200
             return response.json()
@@ -29,22 +30,23 @@ const getData =() => {
           setData(response)
           setIsLoading(false)
         })
-        .catch(setIsLoading(false))
-}// 
+        .catch(setError(error), setIsLoading(false))
+}// не получается выводить компонент Error
 
 useEffect(() => {
-  setIsLoading(true)
-  //getData()
-  setTimeout(() => getData(), 3000)
+  //setIsLoading(true) //для setTimeout
+  getData()
+  //setTimeout(() => getData(), 2000) //для проверки Loading
 }, [])
 
 const values = {data, setData, getData, reEng, reRu, modalActive, setModalActive}
-if(!data){
-    return;
-}
+
 if (isLoading) return <Loading/>
 if (error) return <Error/>
 
+/*if(!data){
+    return;
+}*/
 return (
     <DataContext.Provider value={values}>
         {children}

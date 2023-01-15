@@ -9,9 +9,9 @@ import Modal from '../Modal/Modal';
 export default function WordList () {    
     const { data, setModalActive } = useContext(DataContext);
     
-if(!data){
+/*if(!data){
     return;
-}
+}*/
 
     return (        
         <div className='table-wrap' id='up'>

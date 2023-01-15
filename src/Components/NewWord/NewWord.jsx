@@ -7,7 +7,6 @@ export default function NewWord(){
     const { reEng, reRu, getData, setModalActive } = useContext(DataContext);
 
     const defaultNewWord = {
-        id:'',//???
         english:'',
         transcription:'',
         russian:'',
