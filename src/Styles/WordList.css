@@ -70,21 +70,6 @@ tbody tr:nth-child(even) .errorMsg {
     color: var(--disable-button-color);
 }
 
-.add-btn {
-    width: fit-content;
-    background-color: var(--hover-color);
-    color: var(--main-font-color);
-    border: none;
-    border-radius: 5px;
-    padding: 1vh 1vw;
-    font-family: var(--main-font-family);
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    margin: 1rem auto;
-
-}
-
 @media screen and (max-width: 1280px) {
     caption {
         font-size: 1.25rem;

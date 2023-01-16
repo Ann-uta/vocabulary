@@ -1,7 +1,8 @@
 .edit-btn,
 .delete-btn,
 .save-btn,
-.cancel-btn {
+.cancel-btn,
+.add-btn {
     background-color: var(--hover-color);
     color: var(--main-font-color);
     border: none;
@@ -23,11 +24,17 @@
     background-color: var(--save-button-color);
 }
 
+.add-btn {
+    width: fit-content;
+    margin: 1rem auto;
+}
+
 .save-btn:hover {
     background-color: #307254;
 }
 
-.edit-btn:hover {
+.edit-btn:hover,
+.add-btn:hover {
     background-color: #f59958;
 }
 
