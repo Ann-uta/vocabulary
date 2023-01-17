@@ -3,10 +3,12 @@ import { useState, useContext } from 'react';
 import Card from '../Card/Card';
 import { DataContext } from '../Context/Context';
 import arrow from './arrow.png';
+import Loading from '../Loading/Loading';
 
 export default function CardGallery(){
 let index = 0;
-const { data, setData } = useContext(DataContext)//
+const { data, setData, isLoading } = useContext(DataContext)//, getData, onPrevClick, onNextClick, id, currentIndex 
+//===
 const [currentIndex, setIndex] = useState(index);
 
 function onPrevClick() { 
@@ -19,7 +21,7 @@ let count = currentIndex+1;
 
 const id = data[currentIndex].id //?????? не видит id при перезагрузке страницы game
 const [learned, setLearned] = useState([]);
-
+//==
 function addLearned(){
   if (!learned.includes(id)){
   setLearned([...learned, id]);
@@ -28,7 +30,8 @@ function addLearned(){
     return (      
       <div className='gallery_wrap'>
         <h1>Game</h1>
-        <div className='gallery'>
+        {!data.length ? <Loading/> :
+        (<div className='gallery'>
             <div className="slider"><div className='slider__button'>
                 {count !== 1 &&  <img  onClick={onPrevClick} src={arrow} alt="left" />}</div>
                 <Card {...data[currentIndex]} addLearned={addLearned}                  
@@ -38,6 +41,7 @@ function addLearned(){
             </div>
             <div className='slider__count'>{count}/{data.length}</div>
             <span>Изучено слов: {learned.length}</span>
-        </div></div>
+        </div>)}
+          </div>
         )        
     }
