@@ -32,7 +32,7 @@ const getData =() => {
           setError(e)
           setIsLoading(false)
       })
-}// не получается выводить компонент Error
+}
 
 useEffect(() => {
   //setIsLoading(true) //для setTimeout
@@ -40,25 +40,7 @@ useEffect(() => {
   //setTimeout(() => getData(), 2000) //для проверки Loading
 }, [])
 
-//==
-/*let index = 0;
-const [currentIndex, setIndex] = useState(index);
-
-function onPrevClick() { 
-  setIndex (currentIndex-1);
-}
-function onNextClick() {
-  setIndex (currentIndex+1);
-}
-//let count = currentIndex+1;
-
-const id = data[currentIndex].id //?????? не видит id при перезагрузке страницы game
-//const [learned, setLearned] = useState([]);*/
-
-//==
-
-const values = {data, setData, getData, reEng, reRu, modalActive, setModalActive, isLoading }//onPrevClick, onNextClick, id, currentIndex
-
+const values = {data, setData, getData, reEng, reRu, modalActive, setModalActive, isLoading }
 
 if (isLoading) return <Loading/>
 if (error) return <Error/>

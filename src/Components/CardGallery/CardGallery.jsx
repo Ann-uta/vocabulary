@@ -1,4 +1,3 @@
-//import { useEffect } from 'react';
 import { useState, useContext } from 'react';
 import Card from '../Card/Card';
 import { DataContext } from '../Context/Context';
@@ -7,8 +6,8 @@ import Loading from '../Loading/Loading';
 
 export default function CardGallery(){
 let index = 0;
-const { data, setData, isLoading } = useContext(DataContext)//, getData, onPrevClick, onNextClick, id, currentIndex 
-//===
+const { data, setData } = useContext(DataContext) 
+
 const [currentIndex, setIndex] = useState(index);
 
 function onPrevClick() { 
@@ -19,10 +18,10 @@ function onNextClick() {
 }
 let count = currentIndex+1;
 
-const id = data[currentIndex].id //?????? не видит id при перезагрузке страницы game
 const [learned, setLearned] = useState([]);
-//==
+
 function addLearned(){
+  const id = data[currentIndex].id
   if (!learned.includes(id)){
   setLearned([...learned, id]);
 }}
