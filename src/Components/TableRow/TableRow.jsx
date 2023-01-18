@@ -1,7 +1,7 @@
 import { useState  } from 'react';
 import { observer, inject } from "mobx-react";
 
-export function TableRow({props, words, getData, reEng, reRu, updateData, deleteWord }) {
+export function TableRow({props, words, getData, reEng, reRu, updateData, deleteWord, isLoaded }) {
     const [isEdit, setIsEdit] = useState(false);
     const [inputText, setInputText] = useState (props);
     let [error, setError] = useState({
@@ -56,6 +56,10 @@ export function TableRow({props, words, getData, reEng, reRu, updateData, delete
 
 let disabledBtn = Object.values(error).some(el => el);
 
+if(isLoaded){
+    return;
+} 
+
     return (         
         <tr className='row'>  
         {isEdit
@@ -94,7 +98,7 @@ let disabledBtn = Object.values(error).some(el => el);
     )
 }
 export default inject(({ data }) => {
-    const { words, getData, reEng, reRu, updateData, deleteWord } = data;
+    const { words, getData, reEng, reRu, updateData, deleteWord, isLoaded } = data;
   
     return {
         words,
@@ -102,6 +106,7 @@ export default inject(({ data }) => {
         reEng,
         reRu,
         updateData,
-        deleteWord
+        deleteWord,
+        isLoaded
     };
   })(observer(TableRow));

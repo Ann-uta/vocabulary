@@ -3,8 +3,8 @@ import { makeAutoObservable} from "mobx";
 export default class DataStore {
     words = [];
     isLoaded = false
-
     isLoading = false;
+    
     error = false;
     reEng = new RegExp(/^[A-Za-z&-\s]+$/);
     reRu = new RegExp(/^[А-Яа-яЁё&-\s]+$/);
@@ -14,11 +14,11 @@ export default class DataStore {
         makeAutoObservable(this);
     }
 
-    getData =() => {
-    this.isLoading = true
-    if (this.isLoaded) {
+    getData =() => {    
+    if (this.isLoaded && this.isLoading) {
         return;
     }
+    this.isLoading = true
     fetch('/api/words')
         .then((response) => {
             if (response.ok) {   

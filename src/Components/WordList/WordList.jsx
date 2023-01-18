@@ -5,7 +5,10 @@ import Loading from '../Loading/Loading';
 import React, { useEffect } from 'react';
 import { observer, inject } from "mobx-react";
 
-export function WordList ({words, getData}){    
+export function WordList ({ words, getData, isLoaded }){   
+    if(isLoaded){
+        return;
+    } 
 
     return (        
         <div className='table-wrap' id='up'>
@@ -32,14 +35,15 @@ export function WordList ({words, getData}){
 };
 
 export default inject(({ data }) => {
-    const { words, getData } = data;
+    const { words, getData, isLoaded } = data;
 
     useEffect(() => {
         getData()
-      }, [])
-  
+    }, [])
+
     return {
         words,
-      getData
+        getData,
+        isLoaded
     };
   })(observer(WordList));
