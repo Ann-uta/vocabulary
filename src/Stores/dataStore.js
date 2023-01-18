@@ -2,6 +2,7 @@ import { makeAutoObservable} from "mobx";
 
 export default class DataStore {
     words = [];
+    isLoaded = false
 
     isLoading = false;
     error = false;
@@ -15,6 +16,9 @@ export default class DataStore {
 
     getData =() => {
     this.isLoading = true
+    if (this.isLoaded) {
+        return;
+    }
     fetch('/api/words')
         .then((response) => {
             if (response.ok) {   
@@ -24,6 +28,7 @@ export default class DataStore {
         }})
         .then((response) => {
             this.words(response)
+            this.isLoaded = true
             this.isLoading = false
         })
         .catch((e) => {

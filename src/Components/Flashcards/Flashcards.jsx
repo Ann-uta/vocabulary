@@ -20,6 +20,7 @@ export function Flachcards({words}) {
 }    
 export default inject (({data}) => {
     const {words} = data;
+    
     return {
         words
     };

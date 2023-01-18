@@ -6,10 +6,6 @@ import React, { useEffect } from 'react';
 import { observer, inject } from "mobx-react";
 
 export function WordList ({words, getData}){    
-    
-   useEffect(() => {
-    getData()
-  }, [])
 
     return (        
         <div className='table-wrap' id='up'>
@@ -37,6 +33,10 @@ export function WordList ({words, getData}){
 
 export default inject(({ data }) => {
     const { words, getData } = data;
+
+    useEffect(() => {
+        getData()
+      }, [])
   
     return {
         words,
