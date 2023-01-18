@@ -33,12 +33,75 @@ const getData =() => {
           setIsLoading(false)
       })
 }
+//Апдейт слова
+function updateData(inputText) {
+  fetch(`/api/words/${inputText.id}/update`,{
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+    },
+    body: JSON.stringify(inputText),
+    })
+    .then((response)=>{
+        if (response.ok) {
+            return response.json();
+        }else{
+            throw new Error ('Something went wrong..')
+        }
+    })
+    .then (() => { getData() })
+    .catch((e) => {
+      setError(e)
+      setIsLoading(false)})
+}
+
+  //Удаление слова
+function deleteWord(inputText) {
+  fetch(`/api/words/${inputText.id}/delete`,{
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+    },
+}).then((response)=>{
+  if (response.ok) {
+      return response.json();
+  }else{
+      throw new Error ('Something went wrong..')
+  }
+})
+.then (() => { getData()})
+.catch((e) => {
+  setError(e)
+  setIsLoading(false)})
+}
+
+//добавление слова
+function addWord(newWord) {
+  fetch (`/api/words/add`, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+    },
+    body: JSON.stringify(newWord),
+    })
+    .then((response)=>{
+        if (response.ok) {
+            return response.json();
+        }else{
+            throw new Error ('Something went wrong..')
+        }
+    })
+    .then (() => { getData()})
+    .catch((e) => {
+      setError(e)
+      setIsLoading(false)})
+}
 
 useEffect(() => {
   getData()
 }, [])
 
-const values = {data, setData, getData, reEng, reRu, modalActive, setModalActive, isLoading }
+const values = {data, setData, getData, reEng, reRu, modalActive, setModalActive, isLoading, updateData, deleteWord, addWord }
 
 if (isLoading) return <Loading/>
 if (error) return <Error/>

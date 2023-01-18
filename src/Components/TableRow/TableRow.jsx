@@ -2,7 +2,7 @@ import { useState, useContext  } from 'react';
 import { DataContext } from '../Context/Context';
 
 export default function TableRow(props) {
-    const { data, setData, getData, reEng, reRu } = useContext(DataContext);
+    const { data, setData, getData, reEng, reRu, updateData, deleteWord } = useContext(DataContext);
     const [isEdit, setIsEdit] = useState(false);
     const [inputText, setInputText] = useState (props);
     let [error, setError] = useState({
@@ -46,33 +46,13 @@ export default function TableRow(props) {
         })
         } else {            
             setError({...error,[event.target.name]: ''})
-            fetch(`/api/words/${inputText.id}/update`,{
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json;charset=utf-8'
-                },
-                body: JSON.stringify(inputText),
-                })
-                .then((response)=>{
-                    if (response.ok) {
-                        return response.json();
-                    }else{
-                        throw new Error ('Something went wrong..')
-                    }
-                })
-                .then (() => { getData() })
-                setIsEdit(false)
+            updateData(inputText)
+            setIsEdit(false)
         }       
     }
 
     const onDeleteClick = () => {
-        fetch(`/api/words/${inputText.id}/delete`,{
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            },
-        })
-        .then (() => { getData()})
+        deleteWord(inputText)        
     }
 
 let disabledBtn = Object.values(error).some(el => el);

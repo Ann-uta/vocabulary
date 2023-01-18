@@ -4,7 +4,7 @@ import { DataContext } from '../Context/Context';
 import "./NewWord.css"
 
 export default function NewWord(){
-    const { reEng, reRu, getData, setModalActive } = useContext(DataContext);
+    const { reEng, reRu, getData, setModalActive, addWord } = useContext(DataContext);
 
     const defaultNewWord = {
         english:'',
@@ -73,26 +73,10 @@ export default function NewWord(){
             } else {            
                 setError({...error, [e.target.name]: ''})
                 setEmpty({...empty, [e.target.name]:''})
-                            
-                fetch (`/api/words/add`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json;charset=utf-8'
-                    },
-                    body: JSON.stringify(newWord),
-                    })
-                    .then((response)=>{
-                        if (response.ok) {
-                            return response.json();
-                        }else{
-                            throw new Error ('Something went wrong..')
-                        }
-                    })
-                    .then (() => { getData()})
+                addWord(newWord)             
                 }
-            }                   
+            }                  
         
-
         useEffect(() => {
             let value = Object.values(newWord).some(el => el)        
             if (value === false){
