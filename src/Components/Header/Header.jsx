@@ -5,7 +5,7 @@ import Modal from '../Modal/Modal';
 import { useContext } from 'react';
 import { DataContext } from '../Context/Context';
 
-export default function Header(props) {        
+export default function Header() {        
     const { data, setModalActive } = useContext(DataContext);
     let location = useLocation();
     
@@ -15,14 +15,13 @@ export default function Header(props) {
         }        
     }
     let className = 'add-btn'
-    if (location.pathname == '/game')
+    if (location.pathname === '/game')
     { className += ' disabled'}
     
 
     return (
         <header className="header" id="up">
-            <div className='img-wrap'><NavLink to="/"><img className='header__logo' src={logo} alt="logo" /></NavLink></div>
-            
+            <div className='img-wrap'><NavLink to="/"><img className='header__logo' src={logo} alt="logo" /></NavLink></div>          
                     <nav className='header__menu'>
                 <ul>
                     <li>
@@ -40,10 +39,6 @@ export default function Header(props) {
                 </ul>
             </nav>
         </header>
-           
+        
     )
 }
-//() => setModalActive(true)
-/*<div className="add-btn" onClick={() => setModalActive(true)}>Add new word
-<Modal><NewWord/></Modal>
-</div>*/

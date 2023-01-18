@@ -1,11 +1,8 @@
 import { useState, useContext  } from 'react';
 import { DataContext } from '../Context/Context';
 
-const reEng = new RegExp(/^[A-Za-z&-\s]+$/);
-const reRu = new RegExp(/^[А-Яа-яЁё&-\s]+$/);
-
 export default function TableRow(props) {
-    const { data, setData, getData } = useContext(DataContext);
+    const { data, setData, getData, reEng, reRu } = useContext(DataContext);
     const [isEdit, setIsEdit] = useState(false);
     const [inputText, setInputText] = useState (props);
     let [error, setError] = useState({

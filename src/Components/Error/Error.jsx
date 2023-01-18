@@ -10,4 +10,4 @@ export default function Error() {
             <p>Мы пытаемся разобраться</p>            
         </div>
     )
-}   //
+}   

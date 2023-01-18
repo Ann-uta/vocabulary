@@ -35,9 +35,7 @@ const getData =() => {
 }
 
 useEffect(() => {
-  //setIsLoading(true) //для setTimeout
   getData()
-  //setTimeout(() => getData(), 2000) //для проверки Loading
 }, [])
 
 const values = {data, setData, getData, reEng, reRu, modalActive, setModalActive, isLoading }
