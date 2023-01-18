@@ -19,6 +19,7 @@
     display: inline-flex;
     padding-right: 2vw;
     font-size: 1.5rem;
+    vertical-align: middle;
 }
 
 .header__menu li:hover {
@@ -53,5 +54,14 @@
 @media screen and (max-width: 450px) {
     .header__menu li {
         font-size: 0.8rem;
+    }
+
+    .header__menu ul {
+        padding-left: 3px;
+    }
+
+    .header__logo {
+        width: 2.5rem;
+        padding: 1vw 0 1vw 1vw;
     }
 }

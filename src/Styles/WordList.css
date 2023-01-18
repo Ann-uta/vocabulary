@@ -32,6 +32,7 @@ tbody tr:nth-child(odd) {
 table {
     border: 1px solid var(--main-font-color);
     border-collapse: collapse;
+    margin-bottom: 30px;
 }
 
 td {
