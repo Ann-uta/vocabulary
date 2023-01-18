@@ -94,7 +94,7 @@ addWord(newWord) {
             throw new Error ('Something went wrong..')
         }
     })
-    .then (() => { this.getData()})
+    .then (() => { this.words.push(newWord)})
     .catch((e) => {
         this.error = e
         this.isLoading = false})

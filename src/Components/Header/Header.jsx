@@ -24,7 +24,7 @@ export function Header({ isModalActive}) {
                 <ul>
                     <li>
                         <button className={className} onClick={handleClick}>Add new word</button>
-                        <Modal  ><NewWord /></Modal></li>                    
+                        <Modal ><NewWord /></Modal></li>                    
                     <li>
                         <NavLink to="/">Home</NavLink>
                     </li>
