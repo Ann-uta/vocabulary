@@ -1,8 +1,7 @@
-import { useState, useContext  } from 'react';
-import { DataContext } from '../Context/Context';
+import { useState  } from 'react';
+import { observer, inject } from "mobx-react";
 
-export default function TableRow(props) {
-    const { data, setData, getData, reEng, reRu, updateData, deleteWord } = useContext(DataContext);
+export function TableRow({props, words, getData, reEng, reRu, updateData, deleteWord }) {
     const [isEdit, setIsEdit] = useState(false);
     const [inputText, setInputText] = useState (props);
     let [error, setError] = useState({
@@ -94,3 +93,15 @@ let disabledBtn = Object.values(error).some(el => el);
         }</tr>
     )
 }
+export default inject(({ data }) => {
+    const { words, getData, reEng, reRu, updateData, deleteWord } = data;
+  
+    return {
+        words,
+        getData,
+        reEng,
+        reRu,
+        updateData,
+        deleteWord
+    };
+  })(observer(TableRow));

@@ -2,16 +2,14 @@ import logo from './logo.svg';
 import { NavLink, useLocation } from "react-router-dom";
 import NewWord from '../NewWord/NewWord';
 import Modal from '../Modal/Modal';
-import { useContext } from 'react';
-import { DataContext } from '../Context/Context';
+import { observer, inject } from "mobx-react";
 
-export default function Header() {        
-    const { data, setModalActive } = useContext(DataContext);
+export function Header({ isModalActive}) {        
     let location = useLocation();
     
     function handleClick() {        
         if (location.pathname !== '/game') {
-        setModalActive(true)       
+            isModalActive = true       
         }        
     }
     let className = 'add-btn'
@@ -42,3 +40,10 @@ export default function Header() {
         
     )
 }
+export default inject(({ data }) => {
+    const { isModalActive} = data;
+  
+    return {    
+      isModalActive
+    };
+  })(observer(Header));

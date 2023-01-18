@@ -1,24 +1,29 @@
 import React from "react";
-import { useEffect, useContext } from "react";
-import { DataContext } from '../Context/Context';
+import { useEffect } from "react";
 
 import "./Modal.css"
+import { observer, inject } from "mobx-react";
 
-const Modal = ({ children}) => {
-    
-    const { data, setData, modalActive, setModalActive } = useContext(DataContext);
-    
+export const Modal = ({ children, words, isModalActive}) => {
+   
     useEffect(() => {
-        setModalActive(false)
-    }, [data])
+        isModalActive = false
+    }, [words])
     
     return (
-        <div className={modalActive ? "modal active" : "modal"} onClick={() => setModalActive(false)}>
-            <div className={modalActive ? "modal__content active" : "modal__content"} onClick={e => e.stopPropagation()}>
+        <div className={isModalActive ? "modal active" : "modal"} onClick={() => isModalActive = false}>
+            <div className={isModalActive ? "modal__content active" : "modal__content"} onClick={e => e.stopPropagation()}>
                 {children}
             </div>
         </div>
     )
 }
 
-export default Modal;
+export default inject(({ data }) => {
+    const { words, isModalActive} = data;
+  
+    return {
+        words,
+        isModalActive
+    };
+  })(observer(Modal));

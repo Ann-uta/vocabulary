@@ -1,10 +1,8 @@
 import '../../Styles/Card.css';
-import { useState, useEffect, useRef, useContext } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { DataContext } from '../Context/Context';
 
 export default function Card ({id, russian, english, transcription, addLearned }) {
-    const { data, setData } = useContext(DataContext)
     const [isCheck, setIsCheck] = useState(false);
     const buttonRef = useRef(null);
     let location = useLocation();

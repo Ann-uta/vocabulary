@@ -1,10 +1,8 @@
-import { useEffect } from "react";
-import { useState, useContext } from "react";
-import { DataContext } from '../Context/Context';
+import { useEffect, useState } from "react";
 import "./NewWord.css"
+import { observer, inject } from "mobx-react";
 
-export default function NewWord(){
-    const { reEng, reRu, getData, setModalActive, addWord } = useContext(DataContext);
+export function NewWord({reEng, reRu, isModalActive, addWord}){
 
     const defaultNewWord = {
         english:'',
@@ -44,7 +42,7 @@ export default function NewWord(){
         setNewWord(defaultNewWord)
         setError('')
         setEmpty('')
-        setModalActive(false)
+        isModalActive = false
     }
     
     function onBlur(e){
@@ -123,3 +121,13 @@ export default function NewWord(){
         </form>
     )
 }
+export default inject(({ data }) => {
+    const { reEng, reRu, isModalActive, addWord } = data;
+  
+    return {
+        reEng,
+        reRu,
+        isModalActive,
+        addWord
+    };
+  })(observer(NewWord));

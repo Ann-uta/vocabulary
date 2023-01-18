@@ -2,6 +2,10 @@
     text-align: center;
 }
 
+.loading_wrap img {
+    width: 50%;
+}
+
 .loading_wrap h1 {
     color: var(--main-background-color);
 }

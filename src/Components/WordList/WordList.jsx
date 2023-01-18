@@ -1,19 +1,24 @@
 import '../../Styles/WordList.css';
 import TableHead from '../TableHead/TableHead';
 import TableRow from '../TableRow/TableRow';
-import { useContext } from 'react';
-import { DataContext } from '../Context/Context';
+import Loading from '../Loading/Loading';
+import React, { useEffect } from 'react';
+import { observer, inject } from "mobx-react";
 
-export default function WordList () {    
-    const { data } = useContext(DataContext);
+export function WordList ({words, getData}){    
     
+   useEffect(() => {
+    getData()
+  }, [])
+
     return (        
         <div className='table-wrap' id='up'>
+            {!words.length ? <Loading/> :   
             <table className='table'>
-                <TableHead/>                
+                <TableHead/>  
                 <tbody>                    
                 {
-                data.map((word) =>
+                words.map((word) =>
                 <TableRow
                 key={word.id}
                 id={word.id}
@@ -23,9 +28,18 @@ export default function WordList () {
                 tags={word.tags} />                     
                 )}                
                 </tbody>
-            </table>
+            </table>}
             
         </div>
         
     )
-}
+};
+
+export default inject(({ data }) => {
+    const { words, getData } = data;
+  
+    return {
+        words,
+      getData
+    };
+  })(observer(WordList));
