@@ -1,5 +1,6 @@
 import Card from "../Card/Card";
 import Loading from "../Loading/Loading";
+import { useEffect } from "react";
 import { inject, observer } from 'mobx-react';
 
 
@@ -19,9 +20,12 @@ export function Flachcards({words}) {
         </div>)
 }    
 export default inject (({data}) => {
-    const {words} = data;
-    
+    const {words, getData} = data;
+    useEffect(() => {
+        getData()
+    }, [])
     return {
-        words
+        words,
+        getData
     };
 })(observer(Flachcards));

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Card from '../Card/Card';
 import arrow from './arrow.png';
 import Loading from '../Loading/Loading';
@@ -44,8 +44,12 @@ function addLearned(){
         )        
     }
     export default inject (({data}) => {
-      const {words} = data;
+      const {words, getData} = data;
+      useEffect(() => {
+        getData()
+    }, [])
       return {
-          words
+          words,
+          getData
       };
   })(observer(CardGallery));

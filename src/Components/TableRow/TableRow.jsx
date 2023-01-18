@@ -1,4 +1,4 @@
-import { useState  } from 'react';
+import { useState, useEffect  } from 'react';
 import { observer, inject } from "mobx-react";
 
 export function TableRow({props, words, getData, reEng, reRu, updateData, deleteWord, isLoaded }) {
@@ -99,7 +99,9 @@ if(isLoaded){
 }
 export default inject(({ data }) => {
     const { words, getData, reEng, reRu, updateData, deleteWord, isLoaded } = data;
-  
+    /*useEffect(() => {
+        getData()
+    }, [])*/
     return {
         words,
         getData,

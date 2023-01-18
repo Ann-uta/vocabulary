@@ -4,7 +4,7 @@ export default class DataStore {
     words = [];
     isLoaded = false
     isLoading = false;
-    
+
     error = false;
     reEng = new RegExp(/^[A-Za-z&-\s]+$/);
     reRu = new RegExp(/^[А-Яа-яЁё&-\s]+$/);
@@ -27,7 +27,7 @@ export default class DataStore {
             throw new Error('Something went wrong ...');
         }})
         .then((response) => {
-            this.words(response)
+            this.words = response
             this.isLoaded = true
             this.isLoading = false
         })

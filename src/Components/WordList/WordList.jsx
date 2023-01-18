@@ -5,11 +5,8 @@ import Loading from '../Loading/Loading';
 import React, { useEffect } from 'react';
 import { observer, inject } from "mobx-react";
 
-export function WordList ({ words, getData, isLoaded }){   
-    if(isLoaded){
-        return;
-    } 
-
+export function WordList ({ words }){   
+   
     return (        
         <div className='table-wrap' id='up'>
             {!words.length ? <Loading/> :   
