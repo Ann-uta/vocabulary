@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import Card from '../Card/Card';
+import Card from '../../Components/Card/Card';
 import arrow from './arrow.png';
-import Loading from '../Loading/Loading';
+import Loading from '../../Components/Loading/Loading';
 import { inject, observer } from 'mobx-react';
 
-export function CardGallery(words){
+export function CardGallery({words}){
 let index = 0;
 
 const [currentIndex, setIndex] = useState(index);

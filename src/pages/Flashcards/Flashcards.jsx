@@ -1,5 +1,5 @@
-import Card from "../Card/Card";
-import Loading from "../Loading/Loading";
+import Card from "../../Components/Card/Card";
+import Loading from "../../Components/Loading/Loading";
 import { useEffect } from "react";
 import { inject, observer } from 'mobx-react';
 

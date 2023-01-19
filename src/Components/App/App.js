@@ -11,12 +11,12 @@ import '../../Styles/WordList.css';
 
 import { Routes, Route } from "react-router-dom";
 
-import  WordList from '../WordList/WordList';
+import WordList from '../../pages/WordList/WordList';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import CardGallery from '../CardGallery/CardGallery';
+import CardGallery from '../../pages/CardGallery/CardGallery';
 import NoMatch from '../NoMatch/NoMatch';
-import Flachcards from '../Flashcards/Flashcards';
+import Flachcards from '../../pages/Flashcards/Flashcards';
 
 
 export default function App() {  

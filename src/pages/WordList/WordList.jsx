@@ -1,7 +1,7 @@
 import '../../Styles/WordList.css';
-import TableHead from '../TableHead/TableHead';
-import TableRow from '../TableRow/TableRow';
-import Loading from '../Loading/Loading';
+import TableHead from '../../Components/TableHead/TableHead';
+import TableRow from '../../Components/TableRow/TableRow';
+import Loading from '../../Components/Loading/Loading';
 import React, { useEffect } from 'react';
 import { observer, inject } from "mobx-react";
 
@@ -32,7 +32,7 @@ export function WordList ({ words }){
 };
 
 export default inject(({ data }) => {
-    const { words, getData, isLoaded } = data;
+    const { words, getData } = data;
 
     useEffect(() => {
         getData()
@@ -40,7 +40,6 @@ export default inject(({ data }) => {
 
     return {
         words,
-        getData,
-        isLoaded
+        getData
     };
   })(observer(WordList));
