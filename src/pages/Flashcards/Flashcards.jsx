@@ -5,8 +5,8 @@ import { inject, observer } from 'mobx-react';
 
 
 export function Flachcards({words}) {    
-
-    return (
+    console.log('words flash', words)
+    return (        
         <div className='container'><h1 className='caption'>Flachcards</h1>
             {!words.length ? <Loading/> :
             <div className='card-wrap'>                         

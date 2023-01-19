@@ -2,7 +2,7 @@ import '../../Styles/Card.css';
 import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
-export default function Card ({id, russian, english, transcription, addLearned }) {
+export default function Card ({ id, russian, english, transcription, addLearned }) {
     const [isCheck, setIsCheck] = useState(false);
     const buttonRef = useRef(null);
     let location = useLocation();

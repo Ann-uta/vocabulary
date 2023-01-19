@@ -35,7 +35,7 @@ export default inject(({ data }) => {
     const { words, getData } = data;
 
     useEffect(() => {
-        getData()
+        getData();
     }, [])
 
     return {

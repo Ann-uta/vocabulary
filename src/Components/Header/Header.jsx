@@ -23,7 +23,7 @@ export function Header({ isModalActive}) {
                     <nav className='header__menu'>
                 <ul>
                     <li>
-                        <button className={className} onClick={handleClick}>Add new word</button>
+                        <button className={className} onClick={(handleClick)}>Add new word</button>
                         <Modal ><NewWord /></Modal></li>                    
                     <li>
                         <NavLink to="/">Home</NavLink>

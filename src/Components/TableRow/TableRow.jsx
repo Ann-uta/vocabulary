@@ -1,16 +1,27 @@
 import { useState, useEffect  } from 'react';
 import { observer, inject } from "mobx-react";
+//import Loading from '../Loading/Loading';
 
-export function TableRow({props, words, getData, reEng, reRu, updateData, deleteWord, isLoaded }) {
+export function TableRow({ props, words, reEng, reRu, updateData, deleteWord, isLoaded }) {
     const [isEdit, setIsEdit] = useState(false);
-    const [inputText, setInputText] = useState (props);
+    const [inputText, setInputText] = useState (words);
+     /*   {
+        english: words.english,
+        transcription: words.transcription,
+        russian: words.russian,
+        tags: words.tags,
+    });*/
     let [error, setError] = useState({
         english:'',
         transcription:'',
         russian:'',
         tags:''
     });
-    
+
+    //console.log('props', props)
+    console.log('words', words)
+    console.log('inputText', inputText)
+
     function onEditClick() {
         setIsEdit(true)
     }
@@ -56,11 +67,10 @@ export function TableRow({props, words, getData, reEng, reRu, updateData, delete
 
 let disabledBtn = Object.values(error).some(el => el);
 
-if(isLoaded){
+if(!words){
     return;
-} 
-
-    return (         
+}
+    return (      
         <tr className='row'>  
         {isEdit
         ? <>
