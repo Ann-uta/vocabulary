@@ -7,6 +7,7 @@ import React, { useEffect } from 'react';
 import { observer, inject } from "mobx-react";
 
 export function WordList ({ words, reEng, reRu, updateData, deleteWord, error }){  
+   
 
    if(error){
     return <Error/>;
@@ -40,7 +41,7 @@ export function WordList ({ words, reEng, reRu, updateData, deleteWord, error })
 };
 
 export default inject(({ data }) => {
-    const { words, getData, reEng, reRu, updateData, deleteWord, isModalActive, error } = data;
+    const { words, getData, reEng, reRu, updateData, deleteWord, addWord, isModalActive, error } = data;
 
     useEffect(() => {
         getData();
@@ -53,6 +54,7 @@ export default inject(({ data }) => {
         reRu,
         updateData,
         deleteWord,
+        addWord,
         isModalActive,
         error
     };

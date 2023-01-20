@@ -66,7 +66,6 @@ deleteWord = async (inputText) => {
             'Content-Type': 'application/json;charset=utf-8'
             },
         })        
-        this.getData();
         this.isLoaded = true;
         this.isLoading = false;
     } catch (e) {

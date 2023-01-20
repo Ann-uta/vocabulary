@@ -10,12 +10,13 @@ export default function Header() {
     let location = useLocation();
     
     function handleClick() {        
-        if (location.pathname !== '/game') {
+        if (location.pathname == '/') {
             setModalActive(true)       
         }        
     }
     let className = 'add-btn'
-    if (location.pathname === '/game')
+    if (location.pathname === '/game' ||
+        location.pathname === '/flachcards')
     { className += ' disabled'}
 
     //<NewWord /></Modal>

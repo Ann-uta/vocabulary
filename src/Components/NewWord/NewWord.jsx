@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./NewWord.css"
 
-export default function NewWord({reEng, reRu, setActive, addWord}){
+export default function NewWord({reEng, reRu, setActive, active, addWord}){
 
     const defaultNewWord = {
         english:'',
@@ -87,7 +87,8 @@ export default function NewWord({reEng, reRu, setActive, addWord}){
             setEmpty({...empty,
                 tags:''})
         }            
-        }, [])
+        }, [active])
+
         
     let disabledBtn = Object.values(error).some(el => el) || Object.values(empty).some(el => el) 
 
