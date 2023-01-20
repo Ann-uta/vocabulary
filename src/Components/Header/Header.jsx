@@ -1,21 +1,24 @@
 import logo from './logo.svg';
 import { NavLink, useLocation } from "react-router-dom";
+import { useState } from 'react';
 import NewWord from '../NewWord/NewWord';
 import Modal from '../Modal/Modal';
-import { observer, inject } from "mobx-react";
+//import { observer, inject } from "mobx-react";
 
-export function Header({ isModalActive}) {        
+export default function Header() {
+    const [modalActive, setModalActive] = useState(false)        
     let location = useLocation();
     
     function handleClick() {        
         if (location.pathname !== '/game') {
-            isModalActive = true       
+            setModalActive(true)       
         }        
     }
     let className = 'add-btn'
     if (location.pathname === '/game')
     { className += ' disabled'}
-    
+
+    //<NewWord /></Modal>
 
     return (
         <header className="header" id="up">
@@ -24,7 +27,7 @@ export function Header({ isModalActive}) {
                 <ul>
                     <li>
                         <button className={className} onClick={(handleClick)}>Add new word</button>
-                        <Modal ><NewWord /></Modal></li>                    
+                        <Modal active={modalActive} setActive={setModalActive}/></li>                    
                     <li>
                         <NavLink to="/">Home</NavLink>
                     </li>
@@ -40,10 +43,10 @@ export function Header({ isModalActive}) {
         
     )
 }
-export default inject(({ data }) => {
-    const { isModalActive} = data;
+/*export default inject(({ data }) => {
+    const { addWord} = data;
   
     return {    
-      isModalActive
+      addWord
     };
-  })(observer(Header));
+  })(observer(Header));*/

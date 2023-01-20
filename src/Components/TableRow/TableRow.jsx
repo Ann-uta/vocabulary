@@ -1,16 +1,16 @@
 import { useState, useEffect  } from 'react';
-import { observer, inject } from "mobx-react";
-//import Loading from '../Loading/Loading';
 
-export function TableRow({ props, words, reEng, reRu, updateData, deleteWord, isLoaded }) {
+export default function TableRow({ id, english, transcription, russian, tags, reEng, reRu, updateData, deleteWord }) {
+   
     const [isEdit, setIsEdit] = useState(false);
-    const [inputText, setInputText] = useState (words);
-     /*   {
-        english: words.english,
-        transcription: words.transcription,
-        russian: words.russian,
-        tags: words.tags,
-    });*/
+    let initialWord =  {
+        id: id,
+        english: english,
+        transcription: transcription,
+        russian: russian,
+        tags: tags,
+    }
+    const [inputText, setInputText] = useState (initialWord);
     let [error, setError] = useState({
         english:'',
         transcription:'',
@@ -18,15 +18,11 @@ export function TableRow({ props, words, reEng, reRu, updateData, deleteWord, is
         tags:''
     });
 
-    //console.log('props', props)
-    console.log('words', words)
-    console.log('inputText', inputText)
-
     function onEditClick() {
         setIsEdit(true)
     }
     function onCancelClick() {
-        setInputText(props)
+        setInputText(initialWord)
         setIsEdit(false)
         setError(error = '')
     }
@@ -67,9 +63,6 @@ export function TableRow({ props, words, reEng, reRu, updateData, deleteWord, is
 
 let disabledBtn = Object.values(error).some(el => el);
 
-if(!words){
-    return;
-}
     return (      
         <tr className='row'>  
         {isEdit
@@ -107,18 +100,3 @@ if(!words){
         }</tr>
     )
 }
-export default inject(({ data }) => {
-    const { words, getData, reEng, reRu, updateData, deleteWord, isLoaded } = data;
-    /*useEffect(() => {
-        getData()
-    }, [])*/
-    return {
-        words,
-        getData,
-        reEng,
-        reRu,
-        updateData,
-        deleteWord,
-        isLoaded
-    };
-  })(observer(TableRow));

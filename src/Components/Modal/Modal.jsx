@@ -3,27 +3,30 @@ import { useEffect } from "react";
 
 import "./Modal.css"
 import { observer, inject } from "mobx-react";
+import NewWord from "../NewWord/NewWord";
 
-export const Modal = ({ children, words, isModalActive}) => {
+export function Modal ({ words, active, setActive, addWord, reRu, reEng}) {
    
-    useEffect(() => {
-        isModalActive = false
-    }, [words])
+    /*useEffect(() => {
+        setActive(false)
+    }, [words])*/
     
     return (
-        <div className={isModalActive ? "modal active" : "modal"} onClick={() => isModalActive = false}>
-            <div className={isModalActive ? "modal__content active" : "modal__content"} onClick={e => e.stopPropagation()}>
-                {children}
+        <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
+            <div className={active ? "modal__content active" : "modal__content"} onClick={e => e.stopPropagation()}>
+                <NewWord setActive={setActive} addWord={addWord} reEng={reEng} reRu={reRu}/>
             </div>
         </div>
     )
 }
 
 export default inject(({ data }) => {
-    const { words, isModalActive} = data;
+    const { words, addWord, reRu, reEng } = data;
   
     return {
         words,
-        isModalActive
+        addWord,
+        reRu,
+        reEng
     };
   })(observer(Modal));

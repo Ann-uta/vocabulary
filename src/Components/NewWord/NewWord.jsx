@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import "./NewWord.css"
-import { observer, inject } from "mobx-react";
 
-export function NewWord({reEng, reRu, isModalActive, addWord}){
+export default function NewWord({reEng, reRu, setActive, addWord}){
 
     const defaultNewWord = {
         english:'',
@@ -42,7 +41,7 @@ export function NewWord({reEng, reRu, isModalActive, addWord}){
         setNewWord(defaultNewWord)
         setError('')
         setEmpty('')
-        isModalActive = false
+        setActive(false)
     }
     
     function onBlur(e){
@@ -57,36 +56,40 @@ export function NewWord({reEng, reRu, isModalActive, addWord}){
             }
     }
     
-    function onSaveAddClick(e) {
-            e.preventDefault();
-            if (!newWord.english.trim() && !newWord.russian.trim() && !newWord.transcription.trim() && !newWord.tags.trim()){
-                setError('Поле не должно быть пустым');
-            }  
-                else if (!newWord.english.match(reEng)){
-                    setError({...error,
-                        english: 'Только латинские буквы'})
-                } else if (!newWord.russian.match(reRu)){
+    const onSaveAddClick = (e) => {
+        e.preventDefault();
+        if (!newWord.english.trim() &&
+            !newWord.russian.trim() &&
+            !newWord.transcription.trim() &&
+            !newWord.tags.trim()){
+            setError('Поле не должно быть пустым');
+        }  
+            else if (!newWord.english.match(reEng)){
+                setError({...error,
+                english: 'Только латинские буквы'})
+            } else if (!newWord.russian.match(reRu)){
                     setError({...error,
                         russian: 'Только кириллица'})
-            } else {            
-                setError({...error, [e.target.name]: ''})
-                setEmpty({...empty, [e.target.name]:''})
-                addWord(newWord)             
-                }
-            }                  
+        } else {            
+            setError({...error, [e.target.name]: ''})
+            setEmpty({...empty, [e.target.name]:''})
+            addWord(newWord)
+            setActive(false)             
+            }
+        }                  
         
-        useEffect(() => {
-            let value = Object.values(newWord).some(el => el)        
-            if (value === false){
-                setEmpty({...empty,
-                    tags:'Все поля должны быть заполнены'})
-            } else {
-                setEmpty({...empty,
-                    tags:''})
-            }            
+    useEffect(() => {
+        let value = Object.values(newWord).some(el => el)        
+        if (value === false){
+            setEmpty({...empty,
+                tags:'Все поля должны быть заполнены'})
+        } else {
+            setEmpty({...empty,
+                tags:''})
+        }            
         }, [])
         
-        let disabledBtn = Object.values(error).some(el => el) || Object.values(empty).some(el => el) 
+    let disabledBtn = Object.values(error).some(el => el) || Object.values(empty).some(el => el) 
 
     return(
         <form className="new-word">
@@ -121,13 +124,3 @@ export function NewWord({reEng, reRu, isModalActive, addWord}){
         </form>
     )
 }
-export default inject(({ data }) => {
-    const { reEng, reRu, isModalActive, addWord } = data;
-  
-    return {
-        reEng,
-        reRu,
-        isModalActive,
-        addWord
-    };
-  })(observer(NewWord));

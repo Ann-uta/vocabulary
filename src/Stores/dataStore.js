@@ -8,95 +8,93 @@ export default class DataStore {
     error = false;
     reEng = new RegExp(/^[A-Za-z&-\s]+$/);
     reRu = new RegExp(/^[А-Яа-яЁё&-\s]+$/);
+
     isModalActive = false;
 
     constructor() {
         makeAutoObservable(this);
     }
-
-    getData =() => {    
-    if (this.isLoaded && this.isLoading) {
-        return;
-    }
-    this.isLoading = true
-    fetch('/api/words')
-        .then((response) => {
-            if (response.ok) {   
-            return response.json()
-            } else {
-            throw new Error('Something went wrong ...');
-        }})
-        .then((response) => {
-            this.words = response
-            this.isLoaded = true
-            this.isLoading = false
-        })
-        .catch((e) => {
-            this.error= e
-            this.isLoading = false
-        })
-}
-//Апдейт слова
-updateData(inputText) {
-    fetch(`/api/words/${inputText.id}/update`,{
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json;charset=utf-8'
-    },
-    body: JSON.stringify(inputText),
-    })
-    .then((response)=>{
-        if (response.ok) {
-            return response.json();
-        }else{
-            throw new Error ('Something went wrong..')
+    getData = async () => {
+        try {
+            if (this.isLoaded && this.isLoading) {
+            return;
+            }    
+            this.isLoading = true;
+            const response = await fetch('/api/words');
+            this.isLoading = false;    
+            if (!response.ok) {
+                throw new Error(`Something went wrong: ${response.status}`);
+            }    
+            const data = await response.json();    
+            this.words = data;
+            this.isLoaded = true;
+            } catch (e) {
+            this.error = true;
+            this.isLoading = false;
+            throw e;
         }
-    })
-    .then (() => { this.getData() })
-    .catch((e) => {
-        this.error = e
-        this.isLoading = false})
+    };
+//Апдейт слова
+    updateData = async (inputText) => {
+        try {this.isLoading = true;
+            const response = await fetch(`/api/words/${inputText.id}/update`,{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+                },
+            body: JSON.stringify(inputText),
+            })
+            if (response.ok) {
+            return response.json();
+            } 
+            const data = await response.json();
+            this.words = data;
+            this.isLoading = false;
+        } catch (e) {
+            this.error = true;
+            this.isLoading = false;
+            throw e;
+        }
 }
 
     //Удаление слова
-deleteWord(inputText) {
-    fetch(`/api/words/${inputText.id}/delete`,{
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json;charset=utf-8'
-    },
-    }).then((response)=>{
-        if (response.ok) {
-            return response.json();
-        }else{
-            throw new Error ('Something went wrong..')
-        }
-    })
-    .then (() => { this.getData()})
-    .catch((e) => {
+deleteWord = async (inputText) => {
+    try {this.isLoading = true;
+        const response = fetch(`/api/words/${inputText.id}/delete`,{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+            },
+        })        
+        this.getData();
+        this.isLoaded = true;
+        this.isLoading = false;
+    } catch (e) {
         this.error = e
-        this.isLoading = false})
+        this.isLoading = false;
+        throw e;
     }
+}
 
   //добавление слова
-addWord(newWord) {
-    fetch (`/api/words/add`, {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json;charset=utf-8'
-    },
-    body: JSON.stringify(newWord),
-    })
-    .then((response)=>{
+    addWord = async (newWord) => {
+        try { this.isLoading = true;
+        const response = await fetch (`/api/words/add`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+            },
+        body: JSON.stringify(newWord),
+        })
         if (response.ok) {
-            return response.json();
-        }else{
-            throw new Error ('Something went wrong..')
+                return response.json();
+            }
+        this.words.push(newWord);
+        this.isLoading = false;
+        } catch (e) {
+            this.error = true;
+            this.isLoading = false;
+            throw e;
+            }
         }
-    })
-    .then (() => { this.words.push(newWord)})
-    .catch((e) => {
-        this.error = e
-        this.isLoading = false})
-}
 }
