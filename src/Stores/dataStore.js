@@ -1,5 +1,6 @@
 import { makeAutoObservable, runInAction} from "mobx";
 
+const mockApiWords = 'https://63cbe76c5c6f2e1d84bdd725.mockapi.io/api/words/';
 export default class DataStore {
     words = [];
     isLoaded = false
@@ -9,13 +10,15 @@ export default class DataStore {
     reEng = new RegExp(/^[A-Za-z&-\s]+$/);
     reRu = new RegExp(/^[А-Яа-яЁё&-\s]+$/);
 
+    const
+
     constructor() {
         makeAutoObservable(this);
     }
 
     getData = () => {
         this.isLoading = true;
-        fetch('/api/words')
+        fetch(`${mockApiWords}`)
         .then((result) => {
             if (result.ok) {
                 return result.json();
@@ -37,8 +40,8 @@ export default class DataStore {
     }
 //Апдейт слова
     updateData = (inputText) => {
-        fetch(`/api/words/${inputText.id}/update`, {
-            method: 'POST',
+        fetch(`${mockApiWords}${inputText.id}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
             },
@@ -59,8 +62,8 @@ export default class DataStore {
     //Удаление слова
     deleteWord = (inputText) => {
         this.isLoading = true;
-        fetch(`/api/words/${inputText.id}/delete`, {
-            method: 'POST',
+        fetch(`${mockApiWords}${inputText.id}`, {
+            method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json;charset=utf-8'
                 }
@@ -86,7 +89,7 @@ export default class DataStore {
   //добавление слова
     addWord = (newWord) => {        
         this.isLoading = true;
-        fetch(`/api/words/add`, {
+        fetch(`${mockApiWords}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
