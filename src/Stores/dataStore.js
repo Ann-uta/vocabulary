@@ -12,87 +12,101 @@ export default class DataStore {
     constructor() {
         makeAutoObservable(this);
     }
-    getData = async () => {
-        try {
-            if (this.isLoaded && this.isLoading) {
-            return;
-            }    
-            this.isLoading = true;
-            const response = await fetch('/api/words');
-            this.isLoading = false;    
-            if (!response.ok) {
-                throw new Error(`Something went wrong: ${response.status}`);
-            }    
-            const data = await response.json();    
+
+    getData = () => {
+        this.isLoading = true;
+        fetch('/api/words')
+        .then((result) => {
+            if (result.ok) {
+                return result.json();
+            } else {
+                throw new Error('Something went wrong ...');
+            }
+        })
+        .then((words) => {
             runInAction(() => {
-                this.words = data;
-                this.isLoaded = true});
-            } catch (e) {
-            this.error = true;
+                this.words = words;
+                this.isLoaded = true;
+                this.isLoading = false;
+            });
+        }).catch(error => {
+            this.isLoaded = true;
             this.isLoading = false;
-            throw e;
-        }
-    };
+            this.error = error;
+        });
+    }
 //Апдейт слова
-    updateData = async (inputText) => {
-        try {this.isLoading = true;
-            const response = await fetch(`/api/words/${inputText.id}/update`,{
+    updateData = (inputText) => {
+        fetch(`/api/words/${inputText.id}/update`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
-                },
-            body: JSON.stringify(inputText),
-            })
-            if (response.ok) {
-            return response.json();
-            } 
-            const data = await response.json();
-            this.words = data;
-            this.isLoading = false;
-        } catch (e) {
-            this.error = true;
-            this.isLoading = false;
-            throw e;
-        }
-}
-
-    //Удаление слова
-deleteWord = async (inputText) => {
-    try {this.isLoading = true;
-        const response = fetch(`/api/words/${inputText.id}/delete`,{
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json;charset=utf-8'
             },
-        })        
-        this.isLoaded = true;
-        this.isLoading = false;
-    } catch (e) {
-        this.error = e
-        this.isLoading = false;
-        throw e;
+            body: JSON.stringify(inputText)
+        })
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Something went wrong ...');
+            }
+        })
+        .then(() => this.getData())
+        .catch(error => {
+            this.error = error;
+        });
     }
-}
+    //Удаление слова
+    deleteWord = (inputText) => {
+        this.isLoading = true;
+        fetch(`/api/words/${inputText.id}/delete`, {
+            method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                }
+            })
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                    throw new Error('Something went wrong ...');
+            }
+        })
+        .then(() => {
+            this.getData();
+            this.isLoading = false;
+        })
+        .catch(error => {
+            this.isLoaded = true;
+            this.isLoading = false;
+            this.error = error;
+        });
+    }
 
   //добавление слова
-    addWord = async (newWord) => {
-        try { this.isLoading = true;
-        const response = await fetch (`/api/words/add`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json;charset=utf-8'
+    addWord = (newWord) => {        
+        this.isLoading = true;
+        fetch(`/api/words/add`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
             },
-        body: JSON.stringify(newWord),
+            body: JSON.stringify(newWord)
         })
-        if (response.ok) {
+        .then((response) => {
+            if (response.ok) {
                 return response.json();
+            } else {
+                throw new Error('Something went wrong ...');
             }
-        this.words.push(newWord);  
-        this.isLoading = false;
-        } catch (e) {
-            this.error = true;
+        })
+        .then(() => {
+            this.getData();            
             this.isLoading = false;
-            throw e;
-            }
-        }
+        })
+        .catch(error => {            
+            this.isLoading = false;
+            this.error = error;
+        });
+    }
 }

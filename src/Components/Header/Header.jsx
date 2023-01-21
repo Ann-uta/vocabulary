@@ -3,7 +3,6 @@ import { NavLink, useLocation } from "react-router-dom";
 import { useState } from 'react';
 import NewWord from '../NewWord/NewWord';
 import Modal from '../Modal/Modal';
-//import { observer, inject } from "mobx-react";
 
 export default function Header() {
     const [modalActive, setModalActive] = useState(false)        
@@ -18,8 +17,6 @@ export default function Header() {
     if (location.pathname === '/game' ||
         location.pathname === '/flachcards')
     { className += ' disabled'}
-
-    //<NewWord /></Modal>
 
     return (
         <header className="header" id="up">
@@ -44,10 +41,3 @@ export default function Header() {
         
     )
 }
-/*export default inject(({ data }) => {
-    const { addWord} = data;
-  
-    return {    
-      addWord
-    };
-  })(observer(Header));*/

@@ -8,7 +8,7 @@ import { inject, observer } from 'mobx-react';
 export function Flachcards({words, error}) {    
     if(error){
         return <Error/>;
-       }
+        }
     return (        
         <div className='container'><h1 className='caption'>Flachcards</h1>
             {!words.length ? <Loading/> :

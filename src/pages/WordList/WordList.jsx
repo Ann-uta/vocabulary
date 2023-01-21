@@ -6,7 +6,7 @@ import Error from '../../Components/Error/Error';
 import React, { useEffect } from 'react';
 import { observer, inject } from "mobx-react";
 
-export function WordList ({ words, reEng, reRu, updateData, deleteWord, addWord, getData, error }){  
+export function WordList ({ words, reEng, reRu, updateData, deleteWord, error }){  
     
     if(error){
     return <Error/>;
@@ -57,4 +57,4 @@ export default inject(({ data }) => {
         isModalActive,
         error
     };
-  })(observer(WordList));
+})(observer(WordList));

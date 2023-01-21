@@ -27,7 +27,7 @@ function addLearned(){
 }}
 if(error){
   return <Error/>;
- }
+  }
     return (      
       <div className='gallery_wrap'>
         <h1>Game</h1>
