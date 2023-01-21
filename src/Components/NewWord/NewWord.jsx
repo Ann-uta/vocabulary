@@ -73,7 +73,8 @@ export default function NewWord({reEng, reRu, setActive, active, addWord}){
         } else {            
             setError({...error, [e.target.name]: ''})
             setEmpty({...empty, [e.target.name]:''})
-            addWord(newWord)
+            addWord(newWord)            
+        console.log('add words', newWord)
             setActive(false)             
             }
         }                  

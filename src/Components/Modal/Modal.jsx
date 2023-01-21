@@ -26,11 +26,12 @@ export function Modal ({ words, active, setActive, addWord, reRu, reEng}) {
 }
 
 export default inject(({ data }) => {
-    const { words, addWord, reRu, reEng } = data;
+    const { words,  getData, addWord, reRu, reEng } = data;
   
     return {
         words,
         addWord,
+        getData,
         reRu,
         reEng
     };

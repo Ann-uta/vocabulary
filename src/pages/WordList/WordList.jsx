@@ -6,12 +6,11 @@ import Error from '../../Components/Error/Error';
 import React, { useEffect } from 'react';
 import { observer, inject } from "mobx-react";
 
-export function WordList ({ words, reEng, reRu, updateData, deleteWord, error }){  
-   
-
-   if(error){
+export function WordList ({ words, reEng, reRu, updateData, deleteWord, addWord, getData, error }){  
+    
+    if(error){
     return <Error/>;
-   }
+    }
     return (        
         <div className='table-wrap' id='up'>
             {!words.length ? <Loading/> :   

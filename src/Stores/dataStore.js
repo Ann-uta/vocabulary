@@ -1,4 +1,4 @@
-import { makeAutoObservable} from "mobx";
+import { makeAutoObservable, runInAction} from "mobx";
 
 export default class DataStore {
     words = [];
@@ -8,8 +8,6 @@ export default class DataStore {
     error = false;
     reEng = new RegExp(/^[A-Za-z&-\s]+$/);
     reRu = new RegExp(/^[А-Яа-яЁё&-\s]+$/);
-
-    isModalActive = false;
 
     constructor() {
         makeAutoObservable(this);
@@ -26,8 +24,9 @@ export default class DataStore {
                 throw new Error(`Something went wrong: ${response.status}`);
             }    
             const data = await response.json();    
-            this.words = data;
-            this.isLoaded = true;
+            runInAction(() => {
+                this.words = data;
+                this.isLoaded = true});
             } catch (e) {
             this.error = true;
             this.isLoading = false;
@@ -88,7 +87,7 @@ deleteWord = async (inputText) => {
         if (response.ok) {
                 return response.json();
             }
-        this.words.push(newWord);
+        this.words.push(newWord);  
         this.isLoading = false;
         } catch (e) {
             this.error = true;
