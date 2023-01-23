@@ -71,22 +71,22 @@ let disabledBtn = Object.values(error).some(el => el);
                     onChange={changeInputText} type="text"
                     value={inputText.english}
                     name={'english'}/>
-                <span className='errorMsg'>{error.english}</span></td>
+                <div className='errorMsg'>{error.english}</div></td>
             <td><input className={error.transcription ? 'error':''}
                     onChange={changeInputText} type="text"
                     value={inputText.transcription}
                     name={'transcription'}/>
-                <span className='errorMsg'>{error.transcription}</span></td>
+                <div className='errorMsg'>{error.transcription}</div></td>
             <td><input className={error.russian ? 'error':''}
                     onChange={changeInputText} type="text"
                     value={inputText.russian}
                     name={'russian'}/>
-                <span className='errorMsg'>{error.russian}</span></td>
+                <div className='errorMsg'>{error.russian}</div></td>
             <td><input className={error.tags ? 'error':''}
                     onChange={changeInputText} type="text"
                     value={inputText.tags}
                     name={'tags'} />
-                <span className='errorMsg'>{error.tags}</span></td>
+                <div className='errorMsg'>{error.tags}</div></td>
             <td><button disabled={disabledBtn}  className='save-btn' onClick={onSaveClick}>Save</button>
                 <button className="cancel-btn"onClick={onCancelClick}>Cancel</button></td></>
         : <>

@@ -17,10 +17,14 @@
     transform: translateY(-.25rem);
 }
 
-.errorMsg {
-    margin-top: -18px;
-}
-
 .add-btns-container {
     margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .new-word input::placeholder {
+        font-size: 0.8rem;
+        transform: translateY(-.1rem);
+    }
+
 }

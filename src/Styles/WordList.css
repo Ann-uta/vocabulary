@@ -67,6 +67,10 @@ input:focus {
     color: var(--secondary-color);
 }
 
+.errorMsg~p {
+    margin-top: -18px;
+}
+
 tbody tr:nth-child(even) .errorMsg {
     color: var(--disable-button-color);
 }
@@ -100,6 +104,10 @@ tbody tr:nth-child(even) .errorMsg {
     th:nth-child(2n) {
         display: none;
     }
+
+    .errorMsg {
+        font-size: .7rem;
+    }
 }
 
 @media screen and (max-width: 414px) {
@@ -117,5 +125,9 @@ tbody tr:nth-child(even) .errorMsg {
     td input {
         max-width: 70px;
         padding: 0.2rem;
+    }
+
+    .errorMsg {
+        font-size: 0.5rem;
     }
 }
