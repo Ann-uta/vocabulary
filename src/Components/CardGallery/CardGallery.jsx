@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Card from '../Card/Card';
-import wordsData from '../../wordsData.json';
+import { DataContext } from '../Context/Context';
 import arrow from './arrow.png';
+import Loading from '../Loading/Loading';
 
-export default function CardGallery(props){
-let {index = 0,
-   // total
-  } = props;
+export default function CardGallery(){
+let index = 0;
+const { data, setData } = useContext(DataContext) 
 
 const [currentIndex, setIndex] = useState(index);
 
@@ -18,31 +18,29 @@ function onNextClick() {
 }
 let count = currentIndex+1;
 
-const id = wordsData[currentIndex].id
 const [learned, setLearned] = useState([]);
 
 function addLearned(){
+  const id = data[currentIndex].id
   if (!learned.includes(id)){
   setLearned([...learned, id]);
 }}
 
-    return (
+    return (      
       <div className='gallery_wrap'>
         <h1>Game</h1>
-        <div className='gallery'>
+        {!data.length ? <Loading/> :
+        (<div className='gallery'>
             <div className="slider"><div className='slider__button'>
                 {count !== 1 &&  <img  onClick={onPrevClick} src={arrow} alt="left" />}</div>
-                <Card {...wordsData[currentIndex]} addLearned={addLearned}
-                  /*english={wordsData[currentIndex].english}
-                  transcription={wordsData[currentIndex].transcription}
-                  russian={wordsData[currentIndex].russian}*/
-                  
+                <Card {...data[currentIndex]} addLearned={addLearned}                  
                 />           
                 <div className='slider__button slider__button_right'>
-                {count !== wordsData.length && <img onClick={onNextClick} src={arrow} alt="right" />} </div>
+                {count !== data.length && <img onClick={onNextClick} src={arrow} alt="right" />} </div>
             </div>
-            <div className='slider__count'>{count}/{wordsData.length}</div>
+            <div className='slider__count'>{count}/{data.length}</div>
             <span>Изучено слов: {learned.length}</span>
-        </div></div>
+        </div>)}
+          </div>
         )        
     }

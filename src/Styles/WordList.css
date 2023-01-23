@@ -1,5 +1,6 @@
 .table-wrap {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     overflow-x: hidden;
     margin: 0 auto;
@@ -31,7 +32,7 @@ tbody tr:nth-child(odd) {
 table {
     border: 1px solid var(--main-font-color);
     border-collapse: collapse;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 td {
@@ -53,7 +54,10 @@ td input {
 }
 
 input:hover,
-input:focus,
+input:focus {
+    outline: 1px solid var(--hover-color);
+}
+
 .error {
     outline: 1px solid var(--delete-button-color);
 }
@@ -61,6 +65,10 @@ input:focus,
 .errorMsg {
     font-size: 0.8rem;
     color: var(--secondary-color);
+}
+
+tbody tr:nth-child(even) .errorMsg {
+    color: var(--disable-button-color);
 }
 
 @media screen and (max-width: 1280px) {

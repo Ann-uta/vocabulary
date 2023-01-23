@@ -1,26 +1,19 @@
-import { useState } from 'react';
-
-const reEng = new RegExp(/^[A-Za-z&-\s]+$/);
-const reRu = new RegExp(/^[А-Яа-яЁё&-\s]+$/);
+import { useState, useContext  } from 'react';
+import { DataContext } from '../Context/Context';
 
 export default function TableRow(props) {
-    /*const {
-        english,
-        transcription,
-        russian,
-        tags
-    } = props*/
+    const { data, setData, getData, reEng, reRu, updateData, deleteWord } = useContext(DataContext);
     const [isEdit, setIsEdit] = useState(false);
-    const [inputText, setInputText] = useState (props);    
+    const [inputText, setInputText] = useState (props);
     let [error, setError] = useState({
         english:'',
         transcription:'',
         russian:'',
         tags:''
     });
-
+    
     function onEditClick() {
-    setIsEdit(true)
+        setIsEdit(true)
     }
     function onCancelClick() {
         setInputText(props)
@@ -53,13 +46,19 @@ export default function TableRow(props) {
         })
         } else {            
             setError({...error,[event.target.name]: ''})
+            updateData(inputText)
             setIsEdit(false)
-        }
-}
+        }       
+    }
+
+    const onDeleteClick = () => {
+        deleteWord(inputText)        
+    }
+
 let disabledBtn = Object.values(error).some(el => el);
 
-    return (
-        <tr className='row'>
+    return (         
+        <tr className='row'>  
         {isEdit
         ? <>
             <td><input className={error.english ? 'error':''}
@@ -90,9 +89,8 @@ let disabledBtn = Object.values(error).some(el => el);
             <td>{inputText.russian}</td>
             <td>{inputText.tags}</td>
             <td><button className="edit-btn" onClick={onEditClick}>Edit</button>
-                <button className='delete-btn'>Delete</button></td>
+                <button className='delete-btn' onClick={() => onDeleteClick(inputText.id)}>Delete</button></td>
         </>
-        }</tr>     
-                
+        }</tr>
     )
 }

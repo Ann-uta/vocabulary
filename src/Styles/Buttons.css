@@ -1,7 +1,8 @@
 .edit-btn,
 .delete-btn,
 .save-btn,
-.cancel-btn {
+.cancel-btn,
+.add-btn {
     background-color: var(--hover-color);
     color: var(--main-font-color);
     border: none;
@@ -23,11 +24,17 @@
     background-color: var(--save-button-color);
 }
 
+.add-btn {
+    width: fit-content;
+    margin: 1rem auto;
+}
+
 .save-btn:hover {
     background-color: #307254;
 }
 
-.edit-btn:hover {
+.edit-btn:hover,
+.add-btn:hover {
     background-color: #f59958;
 }
 
@@ -37,8 +44,10 @@
 }
 
 button:disabled,
-button:hover:disabled {
+button:hover:disabled,
+.add-btn.disabled {
     background-color: grey;
+    cursor: auto;
 }
 
 @media screen and (max-width: 1280px) {
@@ -46,7 +55,8 @@ button:hover:disabled {
     .edit-btn,
     .delete-btn,
     .save-btn,
-    .cancel-btn {
+    .cancel-btn,
+    .add-btn {
         padding: 0.5vh 0.5vh;
     }
 }
@@ -56,8 +66,17 @@ button:hover:disabled {
     .edit-btn,
     .delete-btn,
     .save-btn,
-    .cancel-btn {
+    .cancel-btn,
+    .add-btn {
         padding: 0.5vh 0.5vw;
         font-size: 0.7rem;
+    }
+}
+
+@media screen and (max-width: 330px) {
+    .add-btn {
+        width: 50px;
+        padding: 0.1vh;
+        font-size: 0.6rem;
     }
 }
