@@ -67,7 +67,7 @@ input:focus {
     color: var(--secondary-color);
 }
 
-.errorMsg~p {
+.new-word>p {
     margin-top: -18px;
 }
 

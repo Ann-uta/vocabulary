@@ -42,9 +42,13 @@
     margin-top: 50px;
 }
 
-@media screen and (max-width: 425px) {
-    .slider__button {
-        margin: 8px;
+@media screen and (max-height: 800px) {
+    .gallery_wrap {
+        transform: scale(100%);
+    }
+
+    .gallery_wrap h1 {
+        font-size: 2rem;
     }
 }
 
@@ -52,11 +56,16 @@
     .gallery_wrap {
         transform: scale(100%);
     }
+
 }
 
-@media screen and (max-height: 800px) {
-    .gallery_wrap {
-        transform: scale(100%);
+@media screen and (max-width: 425px) {
+    .slider__button {
+        margin: 8px;
+    }
+
+    .gallery_wrap h1 {
+        font-size: 1.5rem;
     }
 }
 

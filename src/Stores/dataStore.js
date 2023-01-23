@@ -10,8 +10,6 @@ export default class DataStore {
     reEng = new RegExp(/^[A-Za-z&-\s]+$/);
     reRu = new RegExp(/^[А-Яа-яЁё&-\s]+$/);
 
-    const
-
     constructor() {
         makeAutoObservable(this);
     }

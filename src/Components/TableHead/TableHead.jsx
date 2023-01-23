@@ -2,7 +2,7 @@
 export default function TableHead() {
     return (
         <>
-        <caption>Vocabulary</caption>
+        <caption >Vocabulary</caption>
         <thead>
             <tr>
                 <th>English</th>

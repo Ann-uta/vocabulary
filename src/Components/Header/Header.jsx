@@ -1,7 +1,6 @@
 import logo from './logo.svg';
 import { NavLink, useLocation } from "react-router-dom";
 import { useState } from 'react';
-import NewWord from '../NewWord/NewWord';
 import Modal from '../Modal/Modal';
 
 export default function Header() {
@@ -9,7 +8,7 @@ export default function Header() {
     let location = useLocation();
     
     function handleClick() {        
-        if (location.pathname == '/') {
+        if (location.pathname === '/') {
             setModalActive(true)       
         }        
     }
@@ -19,7 +18,7 @@ export default function Header() {
     { className += ' disabled'}
 
     return (
-        <header className="header" id="up">
+        <header className="header">
             <div className='img-wrap'><NavLink to="/"><img className='header__logo' src={logo} alt="logo" /></NavLink></div>          
                     <nav className='header__menu'>
                 <ul>

@@ -65,3 +65,9 @@
         padding: 1vw 0 1vw 1vw;
     }
 }
+
+@media screen and (max-height: 450px) {
+    .header {
+        position: static;
+    }
+}

@@ -12,7 +12,7 @@ export function WordList ({ words, reEng, reRu, updateData, deleteWord, error })
     return <Error/>;
     }
     return (        
-        <div className='table-wrap' id='up'>
+        <div className='table-wrap' >
             {!words.length ? <Loading/> :   
             <table className='table'>
                 <TableHead/>  
